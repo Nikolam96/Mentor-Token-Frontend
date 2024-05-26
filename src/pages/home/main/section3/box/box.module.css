@@ -1,0 +1,24 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  background: rgba(181, 163, 239, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  border-radius: var(--b-radius-btn-100);
+  padding: 2rem;
+  text-align: start;
+}
+
+.box img {
+  width: 30px;
+}
+
+.box h3 {
+  padding-block: 2rem;
+}
+
+.box p {
+  width: 85%;
+}

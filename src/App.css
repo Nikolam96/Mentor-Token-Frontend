@@ -25,6 +25,12 @@ ol[role="list"] {
   list-style: none;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
@@ -35,6 +41,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: var(--ff-Manrope);
 }
 
 h1,
@@ -42,12 +49,17 @@ h2,
 h3,
 h4,
 h5 {
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-black);
 }
 
 /* Make images easier to work with */
@@ -79,4 +91,30 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+:root {
+  --m-xl-width: 1240px;
+  --width-900: 90%;
+  --width-950: 95%;
+
+  --clr-black: #000000;
+  --clr-light: #fff;
+  --clr-purple-primary-400: #696cff;
+
+  --fs-280: 1.2rem;
+
+  --p-50: 0.5rem;
+  --p-150: 1.5rem;
+  --p-100: 1rem;
+  --p-70: 0.7rem;
+
+  --gap-50: 0.5rem;
+
+  --b-radius-btn: 0.563rem;
+  --b-radius-btn-100: 1rem;
+  --b-radius-btn-150: 1.5rem;
+
+  --transition--200: 0.2s all ease-in-out;
+
+  --ff-Manrope: "Manrope", sans-serif;
 }

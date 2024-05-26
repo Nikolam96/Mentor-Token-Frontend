@@ -1,0 +1,44 @@
+.home {
+  overflow: clip;
+}
+
+.h1_wrapper {
+  max-width: var(--m-xl-width);
+  margin-inline: auto;
+}
+
+.h1_success {
+  max-width: var(--m-xl-width);
+  font-size: 30px;
+  text-align: start;
+  padding-block: 2rem;
+  margin-left: 7%;
+  width: 60%;
+}
+
+.home h1 span {
+  color: var(--clr-purple-primary-400);
+}
+
+@media (width > 550px) {
+  .h1_success {
+    font-size: 35px;
+    padding-block: 2.3rem;
+    width: 60%;
+  }
+}
+
+@media (width > 768px) {
+  .h1_success {
+    font-size: 35px;
+    width: 60%;
+    padding-block: 2.3rem;
+  }
+}
+
+@media (width > 768) {
+  .h1_success {
+    font-size: 45px;
+    padding-block: 2.7rem;
+  }
+}
