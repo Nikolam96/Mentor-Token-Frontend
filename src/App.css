@@ -109,10 +109,14 @@ select {
   --p-70: 0.7rem;
 
   --gap-50: 0.5rem;
+  --gap-100: 1rem;
+  --gap-150: 1.5rem;
 
   --b-radius-btn: 0.563rem;
   --b-radius-btn-100: 1rem;
   --b-radius-btn-150: 1.5rem;
+
+  --border-b: 3px solid rgba(0, 0, 0, 0.3);
 
   --transition--200: 0.2s all ease-in-out;
 

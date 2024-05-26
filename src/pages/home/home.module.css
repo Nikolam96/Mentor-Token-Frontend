@@ -8,10 +8,9 @@
 }
 
 .h1_success {
-  max-width: var(--m-xl-width);
   font-size: 30px;
   text-align: start;
-  padding-block: 2rem;
+  padding-block: 2.1rem;
   margin-left: 7%;
   width: 60%;
 }
@@ -30,15 +29,15 @@
 
 @media (width > 768px) {
   .h1_success {
-    font-size: 35px;
+    font-size: 40px;
     width: 60%;
     padding-block: 2.3rem;
   }
 }
 
-@media (width > 768) {
+@media (width > 1100px) {
   .h1_success {
     font-size: 45px;
-    padding-block: 2.7rem;
+    padding-block: 2.5rem;
   }
 }
