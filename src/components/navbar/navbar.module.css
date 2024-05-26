@@ -68,7 +68,7 @@
 }
 
 .navbar_nav li:hover a {
-  color: #fff;
+  color: var(--clr-light);
 }
 
 /* UTILITY */
@@ -86,23 +86,25 @@
 }
 
 .active {
-  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  border-bottom: var(--border-b);
   transition: var(--transition--200);
 }
 
 /* MEDIA */
 @media (width > 768px) {
-  .hamburger_menu {
-    display: none;
-  }
   .navbar {
     display: flex;
     justify-content: space-between;
+    padding-block: var(--p-100);
   }
 
   .navbar_nav {
     display: flex;
     height: unset;
+  }
+
+  .hamburger_menu {
+    display: none;
   }
 
   .btn a {
@@ -112,11 +114,5 @@
 
   .btn svg {
     display: block;
-  }
-}
-
-@media (width >= 1200px) {
-  .navbar {
-    padding-block: 1rem;
   }
 }

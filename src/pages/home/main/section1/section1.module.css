@@ -51,7 +51,7 @@ a[data-type="gap"] {
   align-items: center;
   justify-content: center;
   gap: var(--gap-100);
-  color: #fff;
+  color: var(--clr-light);
 }
 
 .btn:hover {
@@ -75,9 +75,11 @@ a[data-type="gap"] {
   .section1 {
     background-position: right;
   }
-  .section1 p,
-  .section1 h1 {
+  .section1 p {
     width: 80%;
+  }
+  .section1 h1 {
+    width: 66%;
   }
   .section1 h1 {
     font-size: 40px;
@@ -88,9 +90,12 @@ a[data-type="gap"] {
 }
 
 @media (min-width: 992px) {
-  .section1 p,
   .section1 h1 {
-    width: 60%;
+    width: 58%;
+  }
+
+  .section1 p {
+    width: 55%;
   }
 
   .section1 h1 {
@@ -105,6 +110,14 @@ a[data-type="gap"] {
 @media (width > 1200px) {
   .section1 p,
   .section1 h1 {
-    width: 50%;
+    width: 52%;
+  }
+
+  .section1 p {
+    font-size: 20px;
+  }
+
+  .section1 h1 {
+    padding-top: 40px;
   }
 }

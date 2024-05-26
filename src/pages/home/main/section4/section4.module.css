@@ -1,5 +1,6 @@
 .section4 {
   --pad: 0.3rem;
+  --m_bottom: 2rem;
 
   max-width: var(--m-xl-width);
   position: relative;
@@ -8,6 +9,7 @@
   border-radius: var(--b-radius-btn-100);
   width: var(--width-950);
   padding: var(--pad);
+  margin-bottom: var(--m_bottom);
 }
 
 .group {
@@ -28,9 +30,10 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (width > 992px) {
   .section4 {
-    --pad: 1.1rem;
+    --pad: 2rem;
+    --m_bottom: 3rem;
   }
 
   .group {

@@ -6,9 +6,9 @@
   margin-inline: auto;
 }
 .row {
-  --150: 150px;
+  --p-150: 150px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--150), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--p-150), 1fr));
   grid-template-rows: auto;
   justify-items: center;
   align-items: center;
@@ -23,7 +23,7 @@
 .small_header {
   --py: 20px;
   text-align: center;
-  padding-block: var(--py);
+  padding-top: var(--py);
   background-image: radial-gradient(
     circle,
     rgba(35, 35, 35, 1),
@@ -37,7 +37,7 @@
 @media (min-width: 500px) {
   .row {
     grid-template-columns: 1fr 1fr;
-    --150: 230px;
+    --p-150: 230px;
   }
 }
 
@@ -47,7 +47,7 @@
   }
   .row {
     grid-template-columns: 1fr 1fr;
-    --150: 200px;
+    --p-150: 200px;
   }
   .col {
     --pt: 18px;

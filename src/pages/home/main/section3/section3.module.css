@@ -21,8 +21,8 @@
 
 .rocket {
   position: absolute;
-  top: -6%;
-  right: -7%;
+  top: -4.4%;
+  right: -12%;
   z-index: 990;
   width: 160px;
 }
@@ -52,7 +52,7 @@
     font-size: 25px;
   }
   .rocket {
-    top: -17%;
+    top: -14%;
     right: 0%;
     width: 200px;
   }

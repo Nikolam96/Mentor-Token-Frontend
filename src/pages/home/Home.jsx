@@ -1,4 +1,3 @@
-import { Footer } from "../../components";
 import { Section1, Section2, Section3, Section4 } from "./main";
 import styles from "./home.module.css";
 
@@ -14,7 +13,6 @@ const Home = () => {
         </h1>
       </div>
       <Section4 />
-      <Footer />
     </div>
   );
 };
