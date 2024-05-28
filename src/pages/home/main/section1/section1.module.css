@@ -55,8 +55,7 @@ a[data-type="gap"] {
 }
 
 .btn:hover {
-  outline: 1px solid;
-  transition: var(--transition--200);
+  outline: 2px solid;
 }
 
 .btn_modifier {

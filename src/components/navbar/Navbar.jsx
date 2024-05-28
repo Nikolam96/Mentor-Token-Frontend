@@ -65,7 +65,10 @@ const Navbar = () => {
         </li>
       </ul>
 
-      <ul className={`${styles.navbar_nav} ${menuOpen && styles.menu_open}`}>
+      <ul
+        className={`${styles.navbar_nav} ${menuOpen && styles.menu_open} `}
+        datatype="modifier"
+      >
         <li>
           <NavLink
             to="/login"
