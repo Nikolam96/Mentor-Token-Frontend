@@ -100,6 +100,8 @@ select {
   --clr-black: #000000;
   --clr-light: #fff;
   --clr-purple-primary-400: #696cff;
+  --clr-purple-hover-400: rgba(105 108 255 / 0.8);
+  --clr-purple-secondary-400: rgba(120, 122, 130, 1);
 
   --fs-280: 1.2rem;
 

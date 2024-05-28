@@ -60,9 +60,12 @@
   border-radius: var(--b-radius-btn);
 }
 
+.navbar_nav [datatype="modifier"] {
+  background-color: var(--clr);
+}
+
 .navbar_nav li:hover {
-  background-color: var(--clr-purple-primary-400);
-  opacity: 0.8;
+  background-color: var(--clr-purple-hover-400);
   color: var(--clr-light);
   transition: var(--transition--200);
 }
@@ -73,7 +76,7 @@
 
 /* UTILITY */
 .menu_open {
-  height: 7.25rem;
+  height: 18vh;
   transition: var(--transition--200);
 }
 

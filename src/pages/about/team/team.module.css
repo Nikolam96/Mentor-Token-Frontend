@@ -1,0 +1,40 @@
+.team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: var(--width-900);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.team img {
+  border-radius: 100%;
+  width: 6.5rem;
+}
+
+.container h1 {
+  padding-bottom: 1rem;
+}
+
+.container span {
+  color: var(--clr-purple-primary-400);
+  font-weight: bold;
+}
+
+.team p {
+  color: var(--clr-purple-secondary-400);
+  text-align: center;
+  font-size: 15px;
+}
+
+.icon_container {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.icon {
+  font-size: 1.3512rem;
+}

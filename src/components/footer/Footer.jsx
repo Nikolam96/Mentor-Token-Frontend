@@ -32,11 +32,14 @@ const Footer = () => {
           <div className={styles.icons}>
             <h3>Follow Us</h3>
             <div className={styles.icon_container}>
-              <a href="#">
-                <FaTwitter className={styles.icon} />
-              </a>
+              {/* /////////////////////////////////////////////////////////////////////////////////////// */}
+              {/* SET LINKS */}
+              {/* /////////////////////////////////////////////////////////////////////////////////////// */}
               <a href="#">
                 <FaLinkedin className={styles.icon} />
+              </a>
+              <a href="#">
+                <FaTwitter className={styles.icon} />
               </a>
               <a href="#">
                 <FaFacebook className={styles.icon} />
