@@ -1,23 +1,17 @@
-section {
-  background-image: url("../../../../../background-section.jpeg");
+.section {
+  background-image: url("../../../../../background-section.jpg");
   background-size: cover;
-  height: 88vh;
   margin-inline: auto;
   border-radius: var(--b-radius-btn);
   width: var(--width-950);
-}
-
-.section1 img {
-  margin-left: auto;
-  border-radius: var(--b-radius-btn);
-  margin-inline: auto;
+  height: 87vh;
 }
 
 .section1 {
   background-image: url("../../../../../big-computer_image.png");
-  background-size: contain;
+  background-size: 95vmin;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: bottom right;
   border-radius: var(--b-radius-btn);
   height: 100%;
 }
@@ -31,7 +25,7 @@ section {
 
 .section1 h1 {
   font-size: 30px;
-  padding-top: 30px;
+  padding-top: 25px;
 }
 .section1 p {
   font-size: 15px;
@@ -44,7 +38,7 @@ a[data-type="gap"] {
 
 .btn {
   background-color: var(--clr-purple-primary-400);
-  padding-inline: var(--p-150);
+  padding-inline: var(--p-100);
   padding-block: var(--p-70);
   border-radius: var(--b-radius-btn);
   display: inline-flex;
@@ -71,52 +65,39 @@ a[data-type="gap"] {
 }
 
 @media (width >= 768px) {
-  .section1 {
-    background-position: right;
-  }
-  .section1 p {
+  .section1 h1 {
+    font-size: 32px;
     width: 80%;
   }
-  .section1 h1 {
-    width: 66%;
-  }
-  .section1 h1 {
-    font-size: 40px;
-  }
   .section1 p {
+    font-size: 17px;
     padding-bottom: 30px;
   }
 }
 
 @media (min-width: 992px) {
   .section1 h1 {
-    width: 58%;
+    width: 60%;
+    font-size: 40px;
+    padding-top: 50px;
   }
 
   .section1 p {
-    width: 55%;
-  }
-
-  .section1 h1 {
-    font-size: 45px;
-  }
-  .section1 p {
+    width: 60%;
     font-size: 17px;
-    padding-bottom: 50px;
   }
 }
 
 @media (width > 1200px) {
-  .section1 p,
-  .section1 h1 {
-    width: 52%;
-  }
-
   .section1 p {
     font-size: 20px;
+    padding-bottom: 70px;
+    width: 50%;
   }
 
   .section1 h1 {
-    padding-top: 40px;
+    font-size: 45px;
+    padding-top: 60px;
+    width: 50%;
   }
 }

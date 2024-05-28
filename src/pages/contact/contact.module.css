@@ -5,7 +5,7 @@
 }
 
 .wrapper {
-  background-image: url("../../../../../background-section.jpeg");
+  background-image: url("../../../../../background-section.jpg");
   max-width: var(--m-xl-width);
   border-radius: var(--b-radius-btn-100);
   padding-block: 3rem;
@@ -62,7 +62,7 @@
 @media (width > 768px) {
   .contact {
     text-align: start;
-    background-image: url("../../../../../background-section.jpeg");
+    background-image: url("../../../../../background-section.jpg");
     border-radius: var(--b-radius-btn-100);
     margin-inline: auto;
     margin-bottom: 1.5rem;
