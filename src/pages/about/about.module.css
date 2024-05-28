@@ -4,7 +4,7 @@
 }
 
 .team_bg {
-  background-image: url("../../../background-section.jpeg");
+  background-image: url("../../../background-section.jpg");
   text-align: center;
   border-radius: var(--b-radius-btn-100);
 }

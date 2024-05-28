@@ -3,7 +3,7 @@ import "../../../../App.css";
 
 const Section1 = () => {
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.section1}>
         <div className={`${styles.w_max}`}>
           <h1>Grow your StartUp! Monitoring and Evaluating now is easy!</h1>
