@@ -60,23 +60,9 @@
   border-radius: var(--b-radius-btn);
 }
 
-.navbar_nav [datatype="modifier"] {
-  background-color: var(--clr);
-}
-
-.navbar_nav li:hover {
-  background-color: var(--clr-purple-hover-400);
-  color: var(--clr-light);
-  transition: var(--transition--200);
-}
-
-.navbar_nav li:hover a {
-  color: var(--clr-light);
-}
-
 /* UTILITY */
 .menu_open {
-  height: 18vh;
+  height: 18.2vh;
   transition: var(--transition--200);
 }
 
@@ -84,13 +70,12 @@
   display: none;
 }
 
-.text_purple {
-  color: var(--clr-purple-primary-400);
-}
-
 .active {
-  border-bottom: var(--border-b);
+  color: var(--clr-purple-primary-400);
   transition: var(--transition--200);
+}
+.red {
+  background-color: red;
 }
 
 /* MEDIA */
