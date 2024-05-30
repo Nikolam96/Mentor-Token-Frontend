@@ -35,9 +35,7 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) => {
-              return isActive
-                ? `${styles.active} ${styles.text_purple}`
-                : `${styles.text_purple}`;
+              return isActive ? `${styles.active}` : ``;
             }}
           >
             Home

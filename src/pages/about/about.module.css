@@ -28,6 +28,7 @@
 
 .row {
   display: grid;
+  align-items: start;
   gap: 3rem;
   margin-block: 4rem;
 }
