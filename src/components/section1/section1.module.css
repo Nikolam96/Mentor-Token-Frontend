@@ -1,0 +1,127 @@
+.section {
+  background-image: url("../../../../../background-section.jpg");
+  background-size: cover;
+  margin-inline: auto;
+  border-radius: var(--b-radius-btn);
+  width: var(--width-950);
+  height: 87vh;
+}
+
+.section1 {
+  background-image: url("../../../../../big-computer_image.png");
+  background-size: 95vmin;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  border-radius: var(--b-radius-btn);
+  height: 100%;
+}
+
+.w_max {
+  width: var(--width-950);
+  max-width: var(--m-xl-width);
+  padding-inline: var(--p-50);
+  margin-inline: auto;
+}
+
+.section1 h1 {
+  font-size: 30px;
+  padding-top: 25px;
+}
+.section1 p {
+  font-size: 14.5px;
+  padding-block: 20px;
+}
+
+a[data-type="gap"] {
+  column-gap: var(--gap-50);
+}
+
+.btn {
+  background-color: var(--clr-purple-primary-400);
+  padding-inline: var(--p-100);
+  padding-block: var(--p-70);
+  border-radius: var(--b-radius-btn);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-100);
+  color: var(--clr-light);
+  animation: pulse 1.5s infinite;
+  transition: 0.3s;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+.btn:hover {
+  border: 3px solid;
+
+  transition: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn_modifier {
+  background-color: transparent;
+  color: var(--clr-dark);
+}
+
+.btn_align {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+@media (width < 390px) {
+  .btn_align {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+@media (width >= 768px) {
+  .section1 h1 {
+    font-size: 32px;
+    width: 80%;
+  }
+  .section1 p {
+    font-size: 17px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .section1 h1 {
+    width: 60%;
+    font-size: 40px;
+    padding-top: 50px;
+  }
+
+  .section1 p {
+    width: 60%;
+    font-size: 17px;
+  }
+}
+
+@media (width > 1200px) {
+  .section1 p {
+    font-size: 20px;
+    padding-bottom: 70px;
+    width: 60%;
+  }
+
+  .section1 h1 {
+    font-size: 45px;
+    padding-top: 60px;
+    width: 60%;
+  }
+}
