@@ -1,0 +1,57 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  background: rgba(181, 163, 239, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  border-radius: var(--b-radius-btn-100);
+  padding: 2rem;
+  text-align: start;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box img {
+  width: 30px;
+}
+
+.box h3 {
+  padding-block: 1.5rem;
+}
+
+.box p {
+  width: 85%;
+}
+
+.active {
+  cursor: pointer;
+}
+
+.hover {
+  cursor: pointer;
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition-delay: none;
+  background-color: rgba(132, 78, 248, 0.4);
+}
+
+.box:nth-child(1) {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.box:nth-child(2) {
+  transition: opacity 0.5s ease 200ms, transform 0.5s ease;
+}
+.box:nth-child(3) {
+  transition: opacity 0.5s ease 400ms, transform 0.5s ease;
+}
+.box:nth-child(4) {
+  transition: opacity 0.5s ease 600ms, transform 0.5s ease;
+}

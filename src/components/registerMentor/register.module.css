@@ -1,0 +1,142 @@
+.register {
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.wrapper {
+  padding-block: 1rem;
+}
+
+.register h2 {
+  text-transform: uppercase;
+  color: rgba(86, 106, 127, 1);
+  padding-block: 0.5rem;
+}
+
+.d_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.briefcase {
+  width: 90px;
+  border-radius: 50%;
+}
+
+.photo {
+  width: 70px;
+  position: absolute;
+  left: 51%;
+  top: -8%;
+  cursor: pointer;
+}
+
+.login input {
+  display: inline-block;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.register input:not([type="checkbox"]) {
+  width: 100%;
+  border-radius: var(--b-radius-btn);
+  outline: none;
+  border: 2px solid rgba(211, 211, 255, 1);
+  padding: 12px;
+  transition: var(--transition--200);
+  font-size: 15px;
+}
+
+.register input[type="submit"] {
+  margin-top: 1rem;
+  background-color: var(--clr-purple-primary-400);
+  color: var(--clr-light);
+  border: 2px solid rgba(0 0 0 / 0);
+  padding: 9px;
+  margin-bottom: 1rem;
+}
+
+.register input[type="checkbox"] {
+  accent-color: var(--clr-purple-primary-400);
+  cursor: pointer;
+  margin-left: 0;
+}
+
+.register input[type="submit"]:hover {
+  background-color: var(--clr-purple-hover-400);
+  cursor: pointer;
+}
+
+.register input:focus-within {
+  border: 2px solid rgba(105, 108, 255, 1);
+}
+
+.label {
+  transform: translate(19px, 11px);
+  background-color: #fff;
+  font-size: 15px;
+  width: 7rem;
+  color: var(--clr-purple-primary-400);
+  text-align: center;
+}
+
+.violet {
+  color: var(--clr-purple-primary-400);
+  text-decoration: underline;
+}
+
+.register span:not(.violet) {
+  color: red;
+}
+
+.low_opacity {
+  opacity: 0.2;
+}
+.red {
+  color: red;
+}
+
+@media (width > 590px) {
+  .register {
+    width: 70%;
+  }
+  .register h2 {
+    text-align: start;
+  }
+}
+
+@media (width > 992px) {
+  .form {
+    text-align: start;
+  }
+
+  .register h2 {
+    font-size: 1.9rem;
+    padding-block: 1rem;
+  }
+}
+
+@media (width > 1200px) {
+  .register h2 {
+    font-size: 2.2rem;
+    padding-block: 1rem;
+  }
+}

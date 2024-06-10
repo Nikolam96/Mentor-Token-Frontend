@@ -1,7 +1,11 @@
-import { About, Contact, Home } from "./pages";
-import { Landing } from "./components";
-import { Auth_layout, Login } from "./auth";
-
+import { About, Contact, Home, Auth } from "./pages";
+import {
+  Register,
+  RegisterMentor,
+  RegisterStartup,
+  Login,
+  Landing,
+} from "./components";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -13,7 +17,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
-        <Route path="/login" element={<Auth_layout />} />
+        <Route element={<Auth />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="register-start-up" element={<RegisterStartup />} />
+          <Route path="register-mentor" element={<RegisterMentor />} />
+        </Route>
       </Routes>
     </>
   );

@@ -1,6 +1,6 @@
-import Team from "./team/Team";
+import Team from "../../components/team/Team";
 import styles from "./about.module.css";
-import data from "./team/data";
+import data from "../../components/team/data";
 
 const About = () => {
   return (
@@ -14,13 +14,13 @@ const About = () => {
               businesses around the world Focus on what's most important to
               them.
             </p>
-            <a href="#" className={`${styles.btn}`} data-type="gap">
+            <a href="/login" className={`${styles.btn}`} data-type="gap">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill="#fff"
+                className="btn"
               >
                 <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
               </svg>

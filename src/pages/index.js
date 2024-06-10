@@ -2,6 +2,6 @@ import Landing from "../components/landing/Landing";
 import About from "./about/About";
 import Contact from "./contact/Contact";
 import Home from "./home/Home";
-Landing;
+import Auth from "./auth_layout/Auth_layout";
 
-export { About, Contact, Home, Landing };
+export { About, Contact, Home, Landing, Auth };

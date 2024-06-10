@@ -1,4 +1,4 @@
-import { Section1, Section2, Section3, Section4 } from "./main";
+import { Section1, Section2, Section3, Section4 } from "../../components";
 import styles from "./home.module.css";
 
 const Home = () => {
