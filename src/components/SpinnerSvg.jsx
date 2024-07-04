@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const SpinnerSvg = ({ spinner }) => {
   return (
     <svg
@@ -34,5 +36,9 @@ const SpinnerSvg = ({ spinner }) => {
       </g>
     </svg>
   );
+};
+
+SpinnerSvg.propTypes = {
+  spinner: PropTypes.bool,
 };
 export default SpinnerSvg;

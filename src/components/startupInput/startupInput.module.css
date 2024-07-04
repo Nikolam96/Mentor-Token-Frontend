@@ -1,0 +1,56 @@
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-block: 1rem;
+  width: 90%;
+  max-width: var(--m-xl-width);
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  padding: 0.7rem 3rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  outline: none;
+  transition: var(--transition--200);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input:focus {
+  border: 2px solid var(--clr-purple-hover-400);
+}
+.smallProfile {
+  display: none;
+}
+
+.smallProfile img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.smallProfile .role {
+  color: var(--clr-purple-secondary-400);
+}
+
+@media (width > 768px) {
+  .inputContainer {
+    justify-content: center;
+    margin-block: 2rem;
+    gap: 1rem;
+  }
+
+  .smallProfile {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+}

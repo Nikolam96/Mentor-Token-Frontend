@@ -1,0 +1,66 @@
+.assignedJobs {
+  text-align: center;
+  color: rgba(86, 106, 127, 1);
+  max-width: var(--m-xl-width);
+  width: var(--width-900);
+  margin-inline: auto;
+}
+
+.assignedJobs ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.assignedJobs li {
+  padding: 0.3rem;
+  border-bottom: 3px solid var(--clr-light-violet-btn);
+  cursor: pointer;
+}
+
+.assignedJobs li:hover {
+  border-bottom: 3px solid var(--clr-purple-primary-400);
+  color: var(--clr-purple-primary-400);
+}
+
+.assignedJob {
+  background-color: #fff;
+  margin-block: 0.3rem;
+  color: rgba(86, 106, 127, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.assignedJob .desc {
+  width: 50%;
+}
+
+.assignedJob .done {
+  color: rgba(49, 170, 39, 1);
+  background-color: rgba(49, 170, 39, 0.2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+}
+
+.assignedJob .rejected {
+  color: rgba(242, 7, 106, 1);
+  background-color: rgba(242, 7, 106, 0.2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+}
+
+.assignedJob .progress {
+  color: rgba(105, 108, 255, 1);
+  background-color: rgba(105, 108, 255, 0.2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+}
+@media (width > 768px) {
+  .assignedJobs {
+    width: 90%;
+  }
+}

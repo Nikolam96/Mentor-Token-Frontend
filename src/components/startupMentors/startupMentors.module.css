@@ -1,0 +1,127 @@
+.startupMentor {
+  max-width: var(--m-xl-width);
+  width: var(--width-950);
+  margin-inline: auto;
+}
+
+.startupMentor .grid {
+  display: grid;
+}
+
+.addMentorComponent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.addMentorComponent img {
+  width: 100px;
+}
+
+.addMentorComponent p {
+  color: rgba(64, 77, 97, 1);
+  padding-block: 0.4rem;
+}
+
+.addMentorComponent .button,
+.mentorsData .button {
+  background-color: var(--clr-purple-primary-400);
+  color: #fff;
+  fill: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.3rem;
+  transition: var(--transition--200);
+}
+
+.addMentorComponent .button:hover,
+.mentorsData .button:hover {
+  background-color: var(--clr-purple-hover-400);
+  cursor: pointer;
+}
+
+.mentorsData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mentorsData img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.mentorsData ul {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.3rem;
+  color: rgba(0, 0, 0, 1);
+}
+
+.mentorsData ul li {
+  padding-left: 1rem;
+}
+
+.mentorsData p {
+  color: var(--clr-purple-primary-400);
+}
+
+.mentorsData h4 {
+  padding-block: 0.3rem;
+}
+
+.mentorsData .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mentorsData .span {
+  font-weight: 500;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+@media (width >= 768px) {
+  .addMentorComponent img {
+    width: 200px;
+  }
+
+  .mentorsData {
+    flex-direction: row;
+  }
+
+  .mentorsData ul {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .mentorsData ul li {
+    padding-left: 0;
+  }
+}
+
+@media (width > 992px) {
+  .grid {
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+}

@@ -2,11 +2,12 @@ import { useState, useRef } from "react";
 import styles from "./register.module.css";
 import { useLocation } from "react-router-dom";
 import SpinnerSvg from "../SpinnerSvg";
-import RegisterMentorApi from "../../api/RegisterMentorApi";
+import PostApi from "../../api/PostApi";
+// import RegisterMentorApi from "../../api/RegisterMentorApi";
 
 const Register = () => {
   const location = useLocation();
-  const form = location.state?.form;
+  const form = location.state?.user;
 
   const [user, setUser] = useState({
     ...form,
@@ -43,8 +44,19 @@ const Register = () => {
     event.preventDefault();
     apiCall();
   };
+  const headers = "multipart/form-data";
 
-  const apiCall = RegisterMentorApi({ user, setSpinner, setError });
+  let url = "signup";
+  let navigateUrl = "/";
+
+  const apiCall = PostApi({
+    user,
+    setSpinner,
+    setError,
+    url,
+    navigateUrl,
+    headers,
+  });
 
   const handleCheckboxChange = (e) => {
     setIsButtonDisabled(!e.target.checked);

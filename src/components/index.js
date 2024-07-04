@@ -10,6 +10,10 @@ import Section2 from "./section2/Section2";
 import Section3 from "./section3/Section3";
 import Section4 from "./section4/Section4";
 import Box from "./box/Box";
+import TokenPage_navbar from "./tokenPage_navbar/TokenPage_navbar";
+import StartupDashboard from "./startupDashboard/StartupDashboard";
+import TopMentorSection from "./topMentorsSection/TopMentorSection";
+import StartupMentors from "./startupMentors/StartupMentors";
 
 export {
   Navbar,
@@ -24,4 +28,8 @@ export {
   Section3,
   Section4,
   Box,
+  TokenPage_navbar,
+  StartupDashboard,
+  TopMentorSection,
+  StartupMentors,
 };

@@ -2,21 +2,22 @@ import { useRef, useState } from "react";
 import styles from "./register.module.css";
 import { useLocation } from "react-router-dom";
 import Spinner from "../SpinnerSvg";
-import RegisterMentorApi from "../../api/RegisterMentorApi";
+import PostApi from "../../api/PostApi";
 
 const Register = () => {
   const location = useLocation();
-  const form = location.state?.form;
+  const form = location.state?.user;
 
   const [user, setUser] = useState({
     ...form,
     startUpName: "",
-    legal_Representative: "",
+    name: "",
     businessAddress: "",
     inviteMentors: "",
     selectedPhoto: null,
   });
 
+  console.log(user);
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -46,7 +47,19 @@ const Register = () => {
     apiCall();
   };
 
-  const apiCall = RegisterMentorApi({ user, setSpinner, setError });
+  let headers = "multipart/form-data";
+
+  let url = "signup";
+  let navigateUrl = "/";
+
+  const apiCall = PostApi({
+    user,
+    setSpinner,
+    setError,
+    url,
+    navigateUrl,
+    headers,
+  });
 
   const handleCheckboxChange = (e) => {
     setIsButtonDisabled(!e.target.checked);
@@ -110,8 +123,8 @@ const Register = () => {
           </label>
           <input
             type="text"
-            name="legal_Representative"
-            value={user.legal_Representative}
+            name="name"
+            value={user.name}
             onChange={handleChange}
             id="legal"
             placeholder="Name and surname"

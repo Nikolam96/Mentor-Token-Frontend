@@ -1,0 +1,67 @@
+.topMentorSection {
+  background-color: #fff;
+  width: var(--width-900);
+  margin-inline: auto;
+  border-radius: 1rem;
+  color: rgba(139, 135, 149, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topMentorElement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 1.5rem;
+  cursor: pointer;
+}
+
+.topMentorElement img {
+  width: 60px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+@media (width >768px) {
+  .topMentorElement {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.achievedJobs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--clr-purple-primary-400);
+  font-weight: bold;
+}
+
+.favorite {
+  outline: 3px solid rgba(105, 108, 255, 0.6);
+  outline-offset: -3px;
+  border-radius: 1rem;
+}
+
+.hover {
+  background-color: rgba(204, 188, 252, 0.2);
+  border-radius: 1rem;
+  transition: var(--transition--200);
+}
+
+.active {
+  color: var(--clr-purple-primary-400);
+  font-weight: bold;
+}
+
+.active img {
+  border: 3px solid var(--clr-purple-primary-400);
+  transition: var(--transition--200);
+}
