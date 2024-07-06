@@ -7,6 +7,8 @@ import {
   Landing,
   StartupDashboard,
   StartupMentors,
+  StartupMentorId,
+  StartupJobs,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 // import PrivateRoute from "./utils/PrivateRoute";
@@ -30,6 +32,8 @@ function App() {
         <Route element={<StartUpPage />}>
           <Route path="startup/dashboard" element={<StartupDashboard />} />
           <Route path="startup/mentors" element={<StartupMentors />} />
+          <Route path="startup/mentors/:id" element={<StartupMentorId />} />
+          <Route path="startup/jobs" element={<StartupJobs />} />
         </Route>
         {/* </PrivateRoute> */}
       </Routes>

@@ -1,23 +1,25 @@
 import AssignedJobs from "../assignedJobs/AssignedJobs";
 import data from "../../data/Assigned_Jobs";
-import styles from "../../pages/startup_page/startup.module.css";
+import styles from "./startUpDashboard.module.css";
 import TopMentorSection from "../topMentorsSection/TopMentorSection";
 import mentorData from "../../data/TopTearMentors";
-import Table from "../table/Table";
+import LineChart from "../lineChart/LineChart";
 import tableData from "../../data/TableData";
 
 const StartupDashboard = () => {
   return (
-    <div className={styles.grid}>
-      <div className={styles.jobs}>
+    <div className={styles.startUpDashboard}>
+      <div>
         <AssignedJobs data={data} />
       </div>
-      <div className={styles.topMentorSection}>
-        <h1>Best Performing Mentors</h1>
-        <TopMentorSection data={mentorData} />
-        <div>
+      <div>
+        <div className={styles.mentor}>
+          <h1>Best Performing Mentors</h1>
+          <TopMentorSection data={mentorData} />
+        </div>
+        <div className={styles.lineChart}>
           <h1>Statistics</h1>
-          <Table agregation={tableData} />
+          <LineChart aggregation={tableData} />
         </div>
       </div>
     </div>

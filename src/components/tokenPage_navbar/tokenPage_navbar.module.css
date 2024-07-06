@@ -5,6 +5,13 @@
   color: rgba(86, 106, 127, 1);
 }
 
+.iconContainer {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  fill: var(--clr-purple-primary-400);
+}
+
 .icon {
   padding: 0.5rem;
   display: flex;
@@ -72,7 +79,7 @@
   fill: var(--clr-purple-primary-400);
 }
 
-@media (width > 768px) {
+@media (width > 800px) {
   .navigation {
     display: flex;
     justify-content: space-around;
@@ -81,6 +88,10 @@
   .icon {
     margin-bottom: unset;
     margin-top: 0.5rem;
+  }
+
+  .icon[datatype="toggle"] {
+    display: none;
   }
 
   .navContainer {

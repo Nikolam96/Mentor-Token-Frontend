@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 }
+
+.startupOverview h1 {
+  text-align: center;
+}
 .startupOverview div {
   background-color: #fff;
   padding: 1rem;

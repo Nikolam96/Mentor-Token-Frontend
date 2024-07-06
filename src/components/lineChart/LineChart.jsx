@@ -1,6 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import styles from "./table.module.css";
+import styles from "./lineChart.module.css";
 import {
   Chart as ChartJS,
   LineElement,
@@ -22,8 +22,8 @@ ChartJS.register(
   Legend
 );
 
-const Table = ({ agregation }) => {
-  const max = Math.max(...agregation) / 2;
+const LineChart = ({ aggregation }) => {
+  const max = Math.max(...aggregation) / 2;
 
   const data = {
     labels: [
@@ -42,7 +42,7 @@ const Table = ({ agregation }) => {
     ],
     datasets: [
       {
-        data: agregation,
+        data: aggregation,
         borderColor: "#7C4DFF",
         borderWidth: 3,
         fill: false,
@@ -106,10 +106,10 @@ const Table = ({ agregation }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.lineChart}>
       <Line data={data} options={options} />
     </div>
   );
 };
 
-export default Table;
+export default LineChart;

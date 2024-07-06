@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const TopMentorSection = ({ data }) => {
   const [click, setClick] = useState(false);
+
   return (
     <div className={styles.topMentorSection}>
       {data.map((person, index) => {

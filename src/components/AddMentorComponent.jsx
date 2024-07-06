@@ -1,12 +1,22 @@
+import { useState } from "react";
 import styles from "./startupMentors/startupMentors.module.css";
+import AddMentorPopUp from "./addMentorPopUp/AddMentorPopUp";
 
 const AddMentorComponent = () => {
+  const [portalUse, setPortalUse] = useState(false);
+
   return (
     <div className={styles.addMentorComponent}>
       <div>
         <h2>My Mentors</h2>
         <p>Monitor and add new mentors</p>
-        <button className={styles.button}>
+
+        <button
+          className={styles.button}
+          onClick={() => {
+            setPortalUse(!portalUse);
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -24,6 +34,15 @@ const AddMentorComponent = () => {
           alt="Image with computer"
         />
       </div>
+      {portalUse && (
+        <AddMentorPopUp
+          setPortalUse={setPortalUse}
+          portalUse={portalUse}
+          header={"Add New Mentor"}
+          subHeader={"Add new mentor and start monitoring"}
+          add={"mentor"}
+        />
+      )}
     </div>
   );
 };

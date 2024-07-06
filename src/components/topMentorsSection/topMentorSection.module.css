@@ -1,6 +1,5 @@
 .topMentorSection {
   background-color: #fff;
-  width: var(--width-900);
   margin-inline: auto;
   border-radius: 1rem;
   color: rgba(139, 135, 149, 1);
@@ -9,11 +8,12 @@
 
 .topMentorElement {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1.3rem 1.5rem;
+  padding: 1.3rem 1rem;
   cursor: pointer;
+  text-align: center;
+  gap: 0.5rem;
 }
 
 .topMentorElement img {
@@ -22,18 +22,11 @@
   border: 3px solid transparent;
 }
 
-@media (width >768px) {
-  .topMentorElement {
-    flex-direction: row;
-    gap: 1rem;
-  }
-}
-
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .achievedJobs {
@@ -64,4 +57,25 @@
 .active img {
   border: 3px solid var(--clr-purple-primary-400);
   transition: var(--transition--200);
+}
+
+.topMentorElement {
+  opacity: 0;
+  transition: var(--transition--200);
+  transform: translateX(20px);
+}
+.topMentorSection .show {
+  opacity: 1;
+  transition: var(--transition--200);
+  transform: translateX(0px);
+}
+
+.topMentorElement:nth-child(1) {
+  transition: opacity 0.5s 200ms ease;
+}
+.topMentorElement:nth-child(2) {
+  transition: opacity 0.5s 400ms ease;
+}
+.topMentorElement:nth-child(3) {
+  transition: opacity 0.5s 600ms ease;
 }

@@ -1,9 +1,6 @@
 .assignedJobs {
   text-align: center;
   color: rgba(86, 106, 127, 1);
-  max-width: var(--m-xl-width);
-  width: var(--width-900);
-  margin-inline: auto;
 }
 
 .assignedJobs ul {
@@ -59,8 +56,70 @@
   padding: 0.5rem 0.8rem;
   border-radius: 0.25rem;
 }
-@media (width > 768px) {
-  .assignedJobs {
-    width: 90%;
-  }
+
+.offer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+.offer button {
+  border: 2px solid rgba(242, 7, 106, 1);
+  color: rgba(242, 7, 106, 1);
+  background-color: transparent;
+  border-radius: 0.3rem;
+  transition: var(--transition--200);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.offer button:hover {
+  background-color: rgba(242, 7, 106, 1);
+  color: #fff;
+}
+
+.assignedJob .observer,
+.offerContainer {
+  opacity: 0;
+  transition: var(--transition--200);
+  transform: translateY(20px);
+}
+.assignedJob .show,
+.pendingShow {
+  opacity: 1;
+  transition: var(--transition--200);
+  transform: translateY(0px);
+}
+
+.assignedJob :nth-child(1),
+.offerContainer:nth-child(1) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(2),
+.offerContainer:nth-child(2) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(3),
+.offerContainer:nth-child(3) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(4),
+.offerContainer:nth-child(4) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(5),
+.offerContainer:nth-child(5) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(6),
+.offerContainer:nth-child(6) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(7),
+.offerContainer:nth-child(7) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(8),
+.offerContainer:nth-child(8) {
+  transition: opacity 0.5s 200ms ease;
 }

@@ -22,4 +22,5 @@ export default [
   { description: "Burn Rate", acceptedStatus: "IN PROGRESS", id: 5 },
   { description: "Operation Efficiency", acceptedStatus: "DONE", id: 6 },
   { description: "Burn Rate", acceptedStatus: "IN PROGRESS", id: 7 },
+  { description: "Burn Rate", acceptedStatus: "IN PROGRESS", id: 8 },
 ];

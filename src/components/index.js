@@ -14,6 +14,8 @@ import TokenPage_navbar from "./tokenPage_navbar/TokenPage_navbar";
 import StartupDashboard from "./startupDashboard/StartupDashboard";
 import TopMentorSection from "./topMentorsSection/TopMentorSection";
 import StartupMentors from "./startupMentors/StartupMentors";
+import StartupMentorId from "./startupMentorId/StartupMentorId";
+import StartupJobs from "./startupJobs/StartupJobs";
 
 export {
   Navbar,
@@ -32,4 +34,6 @@ export {
   StartupDashboard,
   TopMentorSection,
   StartupMentors,
+  StartupMentorId,
+  StartupJobs,
 };

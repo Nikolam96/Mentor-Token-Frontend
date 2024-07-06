@@ -11,9 +11,21 @@ const TokenPage_navbar = ({ items }) => {
 
   return (
     <div className={styles.navigation}>
-      <div className={styles.icon} onClick={handleOpen}>
-        <img src="../../../Vector.png" alt="Vector" className={styles.img} />
-        <h3>Mentor Token</h3>
+      <div className={styles.iconContainer}>
+        <div className={styles.icon}>
+          <img src="../../../Vector.png" alt="Vector" className={styles.img} />
+          <h3>Mentor Token</h3>
+        </div>
+        <div className={styles.icon} datatype="toggle" onClick={handleOpen}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="27px"
+            viewBox="0 -960 960 960"
+            width="27px"
+          >
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+          </svg>
+        </div>
       </div>
       <div className={`${styles.navContainer} ${open && styles.open}`}>
         {items.map((item, index) => (
