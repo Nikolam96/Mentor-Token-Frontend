@@ -12,9 +12,7 @@ const PersonalInfo = ({
   return (
     <div className={styles.personalInfo}>
       <img src="../../../public/id6.png" alt={name} />
-      <h2>
-        {name} <a href="#"></a>
-      </h2>
+      <h2>{name}</h2>
       <p className={styles.svg}>
         <span>
           <svg

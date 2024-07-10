@@ -17,7 +17,7 @@ const StartupMentorId = () => {
   return (
     <div className={styles.startupMentorId}>
       <PersonalInfo {...user} />
-      <AboutSection {...user} />
+      <AboutSection {...user} mentor={true} />
       <div className={styles.col_2}>
         <AssignedJobs data={jobs} />
       </div>

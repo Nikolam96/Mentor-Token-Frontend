@@ -17,7 +17,7 @@ const StartupData = [
   },
   {
     text: "Logout",
-    to: "/logout",
+    to: "/startup/logout",
     img: logout,
   },
 ];

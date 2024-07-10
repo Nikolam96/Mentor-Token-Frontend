@@ -1,23 +1,72 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import styles from "./addMentorPopUp.module.css";
 import PropTypes from "prop-types";
+import SpinnerSvg from "../SpinnerSvg";
+import { getId } from "../../config/StorageFunctions";
+import useJobsApi from "../../api/useJobsApi";
 
 const AddMentorPopUp = ({
   setPortalUse,
   portalUse,
   header,
+  title,
+  description,
   subHeader,
   add,
+  jobOpen,
+  update,
+  id,
 }) => {
   const [fadeOut, setFadeOut] = useState(portalUse);
+  const [error, setError] = useState(null);
   const [data, setData] = useState({
     email: "",
     name: "",
     surname: "",
-    jobName: "",
-    description: "",
+    title: title || "",
+    description: description || "",
+    picture: null,
   });
+
+  const handleClose = () => {
+    setFadeOut(false);
+    setTimeout(() => {
+      setPortalUse(!portalUse);
+    }, 500);
+  };
+
+  const updateJobApi = useJobsApi(setError, handleClose);
+
+  const updateJob = () => {
+    const headers = "multipart/form-data";
+    const url = `updateJob/${id}`;
+    const fetchMethod = "patch";
+
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
+  };
+
+  const createNewJob = () => {
+    data.companyId = getId();
+    const headers = "multipart/form-data";
+    const url = `createJob`;
+    const fetchMethod = "post";
+
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      if (file.type.startsWith("image/")) {
+        setData({ ...data, picture: file });
+      } else {
+        setError("Please select a valid image file.");
+      }
+    }
+  };
+
+  const photoRef = useRef(null);
 
   const handleData = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -30,6 +79,8 @@ const AddMentorPopUp = ({
       <div className={`${styles.container} `}>
         <h1>{header}</h1>
         <p>{subHeader}</p>
+        <SpinnerSvg width={50} spinner={updateJobApi.isPending} />
+        {error && <p className={styles.error}>{error}</p>}
         <div className={`${add === "mentor" ? styles.block : styles.none}`}>
           <div className={styles.inputCont}>
             <label htmlFor="email" className={styles.label}>
@@ -81,14 +132,22 @@ const AddMentorPopUp = ({
           <button className={styles.createMentor}>Create new Mentor</button>
         </div>
         <div className={`${add === "job" ? styles.block : styles.none}`}>
+          <input
+            ref={photoRef}
+            type="file"
+            name="picture"
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+
           <label htmlFor="JobName" className={styles.label}>
             Job Name
           </label>
           <input
             type="text"
             id="JobName"
-            name="jobName"
-            value={data.jobName}
+            name="title"
+            value={data.title}
             onChange={handleData}
             placeholder="Write job name"
             required={true}
@@ -105,17 +164,33 @@ const AddMentorPopUp = ({
             rows={8}
             placeholder="Write short description about job offering"
           ></textarea>
-          <button className={styles.createMentor}>Send Job Offer</button>
+          <button
+            onClick={() => photoRef.current.click()}
+            className={styles.createMentor}
+          >
+            Add Picture
+          </button>
+          {update ? (
+            <button
+              className={styles.createMentor}
+              onClick={updateJob}
+              disabled={updateJobApi.isPending}
+            >
+              Update Job
+            </button>
+          ) : (
+            <>
+              {jobOpen ? (
+                <button className={styles.createMentor} onClick={createNewJob}>
+                  Create New Job
+                </button>
+              ) : (
+                <button className={styles.createMentor}>Send Job Offer</button>
+              )}
+            </>
+          )}
         </div>
-        <button
-          className={styles.exit}
-          onClick={() => {
-            setFadeOut(false);
-            setTimeout(() => {
-              setPortalUse(!portalUse);
-            }, 500);
-          }}
-        >
+        <button className={styles.exit} onClick={handleClose}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="26px"
@@ -139,4 +214,6 @@ AddMentorPopUp.propTypes = {
   header: PropTypes.string,
   subHeader: PropTypes.string,
   add: PropTypes.string,
+  jobOpen: PropTypes.bool,
+  update: PropTypes.bool,
 };

@@ -69,7 +69,7 @@ const Register = () => {
         </button>
       </div>
       {error && <p className={styles.red}>{error}</p>}
-      <SpinnerSvg spinner={spinner} />
+      <SpinnerSvg spinner={spinner} width={30} />
 
       <form action="" className={styles.form}>
         <div className={styles.input_container}>

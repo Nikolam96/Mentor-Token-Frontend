@@ -51,7 +51,7 @@
   transition: var(--transition--200);
 }
 
-.team .show {
+.show {
   opacity: 1;
 }
 
@@ -59,17 +59,17 @@
   transition: opacity 0.5s 200ms ease;
 }
 .team:nth-child(2) {
-  transition: opacity 0.5s 400ms ease;
+  transition: opacity 0.5s 250ms ease;
 }
 .team:nth-child(3) {
-  transition: opacity 0.5s 600ms ease;
+  transition: opacity 0.5s 300ms ease;
 }
 .team:nth-child(4) {
-  transition: opacity 0.5s 800ms ease;
+  transition: opacity 0.5s 350ms ease;
 }
 .team:nth-child(5) {
-  transition: opacity 0.5s 1000ms ease;
+  transition: opacity 0.5s 400ms ease;
 }
 .team:nth-child(6) {
-  transition: opacity 0.5s 1200ms ease;
+  transition: opacity 0.5s 450ms ease;
 }

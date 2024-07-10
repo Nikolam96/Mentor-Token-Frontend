@@ -1,0 +1,13 @@
+.mentor {
+  background-color: rgba(245, 245, 249, 1);
+  padding-bottom: 2rem;
+}
+.mentor h1 {
+  color: rgba(64, 77, 97, 1);
+}
+
+.mentor .wrapper {
+  max-width: var(--m-xl-width);
+  width: var(--width-900);
+  margin-inline: auto;
+}

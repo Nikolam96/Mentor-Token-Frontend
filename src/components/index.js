@@ -16,6 +16,11 @@ import TopMentorSection from "./topMentorsSection/TopMentorSection";
 import StartupMentors from "./startupMentors/StartupMentors";
 import StartupMentorId from "./startupMentorId/StartupMentorId";
 import StartupJobs from "./startupJobs/StartupJobs";
+import MentorDashboard from "./mentorDashboard/MentorDashboard";
+import MentorStats from "./mentorStats/MentorStats";
+import MentorJobs from "./mentorJobs/MentorJobs";
+import Logout from "./Logout";
+import NotFound from "./notFound/NotFound";
 
 export {
   Navbar,
@@ -36,4 +41,9 @@ export {
   StartupMentors,
   StartupMentorId,
   StartupJobs,
+  MentorDashboard,
+  MentorStats,
+  MentorJobs,
+  Logout,
+  NotFound,
 };

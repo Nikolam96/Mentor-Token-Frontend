@@ -14,7 +14,7 @@ const Team = ({
   facebook,
 }) => {
   const { ref: myRef, inView: visible } = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     triggerOnce: true,
   });
 

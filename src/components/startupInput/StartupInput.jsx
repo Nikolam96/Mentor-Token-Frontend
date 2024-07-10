@@ -8,10 +8,6 @@ const StartupInput = ({ placeholder, img, name, role }) => {
     setQuery(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
-
   return (
     <div className={styles.inputContainer}>
       <div className={styles.inputWrapper}>

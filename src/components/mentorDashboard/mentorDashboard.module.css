@@ -1,0 +1,28 @@
+.mentorDashboard {
+  display: grid;
+  gap: 1rem;
+}
+
+.applicationContainer h3 {
+  padding-block: 1rem;
+  color: rgba(86, 106, 127, 1);
+}
+
+.mentorDashboard .assignedJobs {
+  grid-row: span 2;
+}
+
+@media (width > 768px) {
+  .mentorDashboard {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+@media (width > 992px) {
+  .mentorDashboard {
+    width: unset;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}

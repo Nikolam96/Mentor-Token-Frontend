@@ -4,7 +4,6 @@ import { getToken } from "../config/StorageFunctions";
 
 export const PrivateRoute = ({ redirectPath = "/login", children }) => {
   const token = getToken();
-  console.log(token);
   if (!token) {
     return <Navigate to={redirectPath} />;
   }
@@ -13,5 +12,5 @@ export const PrivateRoute = ({ redirectPath = "/login", children }) => {
 
 PrivateRoute.propTypes = {
   redirectPath: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.node,
 };

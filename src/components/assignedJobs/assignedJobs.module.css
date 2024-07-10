@@ -97,29 +97,29 @@
 }
 .assignedJob:nth-child(2),
 .offerContainer:nth-child(2) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 250ms ease;
 }
 .assignedJob:nth-child(3),
 .offerContainer:nth-child(3) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 300ms ease;
 }
 .assignedJob:nth-child(4),
 .offerContainer:nth-child(4) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 350ms ease;
 }
 .assignedJob:nth-child(5),
 .offerContainer:nth-child(5) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 400ms ease;
 }
 .assignedJob:nth-child(6),
 .offerContainer:nth-child(6) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 450ms ease;
 }
 .assignedJob:nth-child(7),
 .offerContainer:nth-child(7) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 500ms ease;
 }
 .assignedJob:nth-child(8),
 .offerContainer:nth-child(8) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 550ms ease;
 }

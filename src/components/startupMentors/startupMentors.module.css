@@ -106,7 +106,7 @@
   transition: opacity 0.5s 200ms ease;
 }
 .mentorsData:nth-child(2) {
-  transition: opacity 0.5s 200ms ease;
+  transition: opacity 0.5s 300ms ease;
 }
 .mentorsData:nth-child(3) {
   transition: opacity 0.5s 200ms ease;

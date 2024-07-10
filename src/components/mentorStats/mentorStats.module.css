@@ -1,0 +1,39 @@
+.mentorStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mentorStats .lineChart h1 {
+  padding-bottom: 1rem;
+}
+
+@media (width > 580px) {
+  .mentorStats {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+@media (width > 992px) {
+  .mentorStats {
+    width: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .mentorStats .about {
+    grid-column: span 4;
+  }
+
+  .mentorStats .lineChart {
+    grid-column: span 3;
+    width: 95%;
+  }
+
+  .mentorStats .overview {
+    grid-column: span 2;
+    width: 90%;
+    margin-inline: auto;
+  }
+}

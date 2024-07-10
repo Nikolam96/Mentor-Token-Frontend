@@ -14,7 +14,12 @@ const StartupMentors = () => {
             return <MentorsDataComponent key={mentor.id} mentor={mentor} />;
           })}
         </div>
-        <StartupOverview mentors={12} AssignedJobs={25} finishedJobs={252} />
+        <StartupOverview
+          mentors={12}
+          AssignedJobs={25}
+          finishedJobs={252}
+          startup={true}
+        />
       </div>
     </div>
   );

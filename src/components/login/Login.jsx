@@ -18,14 +18,12 @@ const Login = () => {
   };
 
   let url = "login";
-  let navigateUrl = "/about";
 
   const apiCall = PostApi({
     user,
     setSpinner,
     setError,
     url,
-    navigateUrl,
   });
 
   const handleClick = (event) => {
@@ -41,7 +39,7 @@ const Login = () => {
       </div>
 
       {error && <p className={styles.red}>{error}</p>}
-      <SpinnerSvg spinner={spinner} />
+      <SpinnerSvg spinner={spinner} width={30} />
 
       <form action="" className={styles.form}>
         <div className={styles.input_container}>

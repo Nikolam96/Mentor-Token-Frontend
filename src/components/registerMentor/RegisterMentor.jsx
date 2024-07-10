@@ -3,7 +3,6 @@ import styles from "./register.module.css";
 import { useLocation } from "react-router-dom";
 import SpinnerSvg from "../SpinnerSvg";
 import PostApi from "../../api/PostApi";
-// import RegisterMentorApi from "../../api/RegisterMentorApi";
 
 const Register = () => {
   const location = useLocation();
@@ -12,7 +11,7 @@ const Register = () => {
   const [user, setUser] = useState({
     ...form,
     name: "",
-    startUpName: "",
+    phone: "",
     picture: null,
   });
   console.log(form);
@@ -89,11 +88,11 @@ const Register = () => {
         />
       </div>
       {error && <p className={styles.red}>{error}</p>}
-      <SpinnerSvg spinner={spinner} />
+      <SpinnerSvg spinner={spinner} width={30} />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.input_container}>
           <label htmlFor="name" className={styles.label}>
-            Mentor Name
+            Name & Surname
           </label>
           <input
             type="text"
@@ -104,27 +103,27 @@ const Register = () => {
               setError("");
             }}
             id="name"
-            placeholder="Name and surname"
+            placeholder="Name & Surname"
             required={true}
             autoComplete="off"
           />
         </div>
         <div>
-          <label htmlFor="startup">
-            Startup Name<span>*</span>
+          <label htmlFor="phone" className={styles.label}>
+            Phone
           </label>
           <input
-            type="text"
-            name="startUpName"
-            value={user.startUpName}
+            type="tel"
+            id="phone"
+            name="phone"
+            value={user.phone}
             onChange={(e) => {
               handleChange(e);
               setError("");
             }}
-            id="startup"
-            placeholder="Startup name"
-            required={true}
-            autoComplete="off"
+            placeholder="+381 64 409 0111"
+            pattern="\+[0-9]{3} [0-9]{2} [0-9]{3} [0-9]{3,4}"
+            required
           />
         </div>
         <div>

@@ -18,23 +18,30 @@ const PostApi = ({ user, setSpinner, setError, navigateUrl, url, headers }) => {
       return response.data;
     },
     onSuccess: (data) => {
-      console.log(user);
-
       const token = data?.data?.token;
       if (token) {
         const decodedToken = decodeToken(token);
-        setUserStorage(token, decodedToken.id);
-
-        setTimeout(() => {
+        console.log(decodedToken);
+        setUserStorage(
+          token,
+          decodedToken.id,
+          decodedToken.role,
+          decodedToken.name,
+          decodedToken.startUpName,
+          decodedToken.picture
+        );
+        console.log(decodedToken);
+        if (decodedToken.role == "mentor") {
           setSpinner(false);
-          navigate(navigateUrl, { state: decodedToken });
-        }, 1000);
+          return navigate("/mentor/dashboard");
+        }
+        if (decodedToken.role == "startup") {
+          setSpinner(false);
+          return navigate("/startup/dashboard");
+        }
       }
 
-      setTimeout(() => {
-        setSpinner(false);
-        navigate(navigateUrl, { state: { user } });
-      }, 1000);
+      navigate(navigateUrl, { state: { user } });
     },
     onError: (error) => {
       console.log(error);
