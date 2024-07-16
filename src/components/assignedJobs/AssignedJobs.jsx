@@ -1,27 +1,40 @@
 import styles from "./assignedJobs.module.css";
-import AssignedJob from "../AssignedJob";
+import { useInView } from "react-intersection-observer";
+import ViewJob from "../viewJob/ViewJob";
 import { useState } from "react";
 
-const AssignedJobs = ({ data }) => {
-  const [jobs, setJobs] = useState(data);
-
-  const setFilter = (status) => {
-    setJobs(data.filter((job) => job.acceptedStatus.toLowerCase() === status));
-  };
+const AssignedJob = ({ acceptedStatus, jobId }) => {
+  const { ref: myRef, inView: visible } = useInView({
+    threshold: 0.8,
+    triggerOnce: true,
+  });
+  const status = acceptedStatus.toLowerCase();
+  const [portal, setPortal] = useState(false);
 
   return (
-    <div className={styles.assignedJobs}>
-      <h1>Assigned Jobs</h1>
-      <ul>
-        <li onClick={() => setJobs(data)}>All</li>
-        <li onClick={() => setFilter("done")}>Done</li>
-        <li onClick={() => setFilter("rejected")}>Rejected</li>
-        <li onClick={() => setFilter("in progress")}>In progress</li>
-      </ul>
-      {jobs.map((job) => {
-        return <AssignedJob {...job} key={job.id} />;
-      })}
+    <div className={styles.assignedJob} onClick={() => setPortal(true)}>
+      <h3 className={styles.desc}>{jobId?.title}</h3>
+      <div
+        ref={myRef}
+        className={`${styles.observer} ${visible && styles.show}`}
+      >
+        {status === "done" && <p className={styles.done}>{acceptedStatus}</p>}
+        {status === "rejected" && (
+          <p className={styles.rejected}>{acceptedStatus}</p>
+        )}
+        {status === "in progress" && (
+          <p className={styles.progress}>{acceptedStatus}</p>
+        )}
+      </div>
+      {portal && (
+        <ViewJob
+          setPortal={setPortal}
+          portal={portal}
+          jobId={jobId._id}
+          status={status}
+        />
+      )}
     </div>
   );
 };
-export default AssignedJobs;
+export default AssignedJob;

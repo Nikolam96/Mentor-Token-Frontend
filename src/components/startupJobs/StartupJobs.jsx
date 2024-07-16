@@ -10,7 +10,7 @@ const StartupJobs = () => {
   const [portalUse, setPortalUse] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  let page = `?page=${currentPage}`;
+  let page = `?page=${currentPage}&status=open`;
   let url = `/jobs/${getId()}`;
 
   const { data: jobsData, isLoading, error } = useJobsApi(page, url);
@@ -81,22 +81,24 @@ const StartupJobs = () => {
         </div>
       )}
 
-      <div className={styles.pagination}>
-        <button
-          onClick={handlePrevPage}
-          disabled={pagination.currentPage === 1}
-          className={pagination.currentPage === 1 ? styles.red : ""}
-        >
-          Previous Page
-        </button>
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === pagination.totalPages}
-          className={currentPage === pagination.totalPages ? styles.red : ""}
-        >
-          Next Page
-        </button>
-      </div>
+      {pagination.totalDocs > pagination.limit && (
+        <div className={styles.pagination}>
+          <button
+            onClick={handlePrevPage}
+            disabled={pagination.page === 1}
+            className={pagination.page === 1 ? styles.red : ""}
+          >
+            Previous Page
+          </button>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === pagination.totalPages}
+            className={currentPage === pagination.totalPages ? styles.red : ""}
+          >
+            Next Page
+          </button>
+        </div>
+      )}
     </div>
   );
 };

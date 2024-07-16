@@ -9,11 +9,12 @@ const fetchJobs = async ({ queryKey }) => {
   return response.data.data;
 };
 
-const useJobsApi = (currentPage, url) => {
+const startUpApi = (currentPage, url) => {
   return useQuery({
     queryKey: [url, currentPage],
     queryFn: fetchJobs,
+    enabled: false,
   });
 };
 
-export default useJobsApi;
+export default startUpApi;

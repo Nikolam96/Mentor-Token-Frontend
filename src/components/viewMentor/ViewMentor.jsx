@@ -28,6 +28,7 @@ const ViewMentor = ({
 
   let page = `?page=${currentPage}`;
   let url = `/applications/${id}`;
+  const deleteUrl = `deleteJob/${id}`;
 
   const { data: jobsData, isLoading, error } = useJobsApi(page, url);
   const jobs = jobsData?.jobs || [];
@@ -63,20 +64,22 @@ const ViewMentor = ({
           <p>{description}</p>
           <p>Created At: {formattedDate}</p>
 
-          <div className={styles.btnContainer}>
-            <button
-              className={styles.assign}
-              onClick={() => setUpdateJob(true)}
-            >
-              Update
-            </button>
-            <button
-              className={styles.reject}
-              onClick={() => setDeleteJob(true)}
-            >
-              Delete
-            </button>
-          </div>
+          {mentors && (
+            <div className={styles.btnContainer}>
+              <button
+                className={styles.assign}
+                onClick={() => setUpdateJob(true)}
+              >
+                Update
+              </button>
+              <button
+                className={styles.reject}
+                onClick={() => setDeleteJob(true)}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
 
         {mentors ? (
@@ -163,7 +166,7 @@ const ViewMentor = ({
           setPortalUse={setDeleteJob}
           portalUse={deleteJob}
           header={"Are you sure you want to delete this job? "}
-          id={id}
+          url={deleteUrl}
         />
       )}
     </div>,

@@ -17,6 +17,7 @@ const AddMentorPopUp = ({
   jobOpen,
   update,
   id,
+  role,
 }) => {
   const [fadeOut, setFadeOut] = useState(portalUse);
   const [error, setError] = useState(null);
@@ -26,6 +27,7 @@ const AddMentorPopUp = ({
     surname: "",
     title: title || "",
     description: description || "",
+    status: "open",
     picture: null,
   });
 
@@ -39,18 +41,30 @@ const AddMentorPopUp = ({
   const updateJobApi = useJobsApi(setError, handleClose);
 
   const updateJob = () => {
-    const headers = "multipart/form-data";
-    const url = `updateJob/${id}`;
-    const fetchMethod = "patch";
+    let headers = "multipart/form-data";
+    let url = `updateJob/${id}`;
+    let fetchMethod = "patch";
+
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
+  };
+
+  const offerJob = () => {
+    data.companyId = getId();
+    data.applicationType = "companyToMentor";
+    data.mentorId = id;
+    data.status = "direct";
+    let headers = "multipart/form-data";
+    let url = `offerJob`;
+    let fetchMethod = "post";
 
     updateJobApi.mutate({ data, url, headers, fetchMethod });
   };
 
   const createNewJob = () => {
     data.companyId = getId();
-    const headers = "multipart/form-data";
-    const url = `createJob`;
-    const fetchMethod = "post";
+    let headers = "multipart/form-data";
+    let url = `createJob`;
+    let fetchMethod = "post";
 
     updateJobApi.mutate({ data, url, headers, fetchMethod });
   };
@@ -72,6 +86,9 @@ const AddMentorPopUp = ({
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  if (role === "mentor") {
+    return ReactDOM.createPortal();
+  }
   return ReactDOM.createPortal(
     <div
       className={`${styles.addMentor} ${fadeOut ? styles.show : styles.hide}`}
@@ -185,21 +202,25 @@ const AddMentorPopUp = ({
                   Create New Job
                 </button>
               ) : (
-                <button className={styles.createMentor}>Send Job Offer</button>
+                <button className={styles.createMentor} onClick={offerJob}>
+                  Send Job Offer
+                </button>
               )}
             </>
           )}
         </div>
-        <button className={styles.exit} onClick={handleClose}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="26px"
-            viewBox="0 -960 960 960"
-            width="26px"
-          >
-            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-          </svg>
-        </button>
+        <div>
+          <button className={styles.exit} onClick={handleClose}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="26px"
+              viewBox="0 -960 960 960"
+              width="26px"
+            >
+              <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>,
     document.body
@@ -216,4 +237,5 @@ AddMentorPopUp.propTypes = {
   add: PropTypes.string,
   jobOpen: PropTypes.bool,
   update: PropTypes.bool,
+  id: PropTypes.string,
 };

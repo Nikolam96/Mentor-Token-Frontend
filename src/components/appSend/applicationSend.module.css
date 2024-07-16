@@ -9,8 +9,12 @@
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   gap: 0.5rem;
-  opacity: 0;
   cursor: pointer;
+}
+
+.applicationSend:hover h3 {
+  text-decoration: underline;
+  color: var(--clr-purple-primary-400);
 }
 
 .applicationSend .btnContainer {
@@ -48,8 +52,18 @@
   color: #fff;
 }
 
-.show {
+.applicationSend button,
+.applicationSend svg {
+  opacity: 0;
+  transition: var(--transition--200);
+  transform: translateY(20px);
+}
+
+.show button,
+.show svg {
   opacity: 1;
+  transition: var(--transition--200);
+  transform: translateY(0px);
 }
 
 .applicationSend:nth-child(1) {

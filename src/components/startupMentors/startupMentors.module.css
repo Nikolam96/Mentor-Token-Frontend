@@ -106,7 +106,7 @@
   transition: opacity 0.5s 200ms ease;
 }
 .mentorsData:nth-child(2) {
-  transition: opacity 0.5s 300ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .mentorsData:nth-child(3) {
   transition: opacity 0.5s 200ms ease;
@@ -116,6 +116,35 @@
 }
 .mentorsData:nth-child(5) {
   transition: opacity 0.5s 200ms ease;
+}
+
+.pagination button {
+  background-color: var(--clr-purple-primary-400);
+  color: #fff;
+  fill: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.3rem;
+  transition: var(--transition--200);
+  cursor: pointer;
+  gap: 0.1rem;
+}
+
+.pagination button:hover {
+  background-color: var(--clr-purple-hover-400);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pagination .red {
+  background-color: var(--clr-purple-secondary-400);
 }
 
 @media (width >= 768px) {

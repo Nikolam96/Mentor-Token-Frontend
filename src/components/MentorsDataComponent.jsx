@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
 const MentorsDataComponent = ({ mentor }) => {
-  const { name, picture, skills, id, description, email } = mentor;
+  const { name, picture, skills, _id, description, email } = mentor;
+  console.log();
 
   const { ref: myRef, inView: visible } = useInView({
     threshold: 0.5,
@@ -17,14 +18,13 @@ const MentorsDataComponent = ({ mentor }) => {
   return (
     <div
       className={`${styles.mentorsData} ${visible && styles.show}`}
-      key={id}
       ref={myRef}
     >
       <div className={styles.card}>
         <img src="../../public/id1.png" alt={name} />
         <div>
           <h2>{name}</h2>
-          <StarRating totalStars={5} />
+          {/* <StarRating totalStars={5} /> */}
           <ul>
             <h4>Skills :</h4>
             {skills.map((skill, index) => (
@@ -34,7 +34,7 @@ const MentorsDataComponent = ({ mentor }) => {
           <span className={styles.span}>{newDescription} ...</span>
         </div>
       </div>
-      <NavLink to={`/startup/mentors/${id}`}>
+      <NavLink to={`/startup/mentors/${_id}`}>
         <button className={styles.button}>View Mentor</button>
       </NavLink>
     </div>

@@ -23,6 +23,10 @@ const StartUpPage = () => {
     }
   }, []);
 
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <div className={styles.startUp}>
       <div className={styles.wrapper}>

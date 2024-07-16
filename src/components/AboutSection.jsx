@@ -2,28 +2,22 @@ import styles from "./startupMentorId/startupMentorId.module.css";
 import AddMentorPopUp from "./addMentorPopUp/AddMentorPopUp";
 import { useState } from "react";
 
-const AboutSection = ({
-  name,
-  picture,
-  email,
-  password,
-  skills,
-  description,
-  phone,
-  mentor,
-}) => {
+const AboutSection = ({ skills, description, mentor, _id }) => {
   const [portalUse, setPortalUse] = useState(false);
 
   return (
     <div className={styles.aboutSection}>
       <h2>About Mentor</h2>
-      <ul>
-        <h4>Skills:</h4>
-        {skills.map((skill, index) => {
-          return <li key={index}>{skill}</li>;
-        })}
-      </ul>
-      <p>{description}</p>
+      {skills.length === 0 && <h3>There are currently no Skills!</h3>}
+      {skills.length > 1 && (
+        <ul>
+          <h4>Skills:</h4>
+          {skills.map((skill, index) => {
+            return <li key={index}>{skill}</li>;
+          })}
+        </ul>
+      )}
+      <p>{description || "There are currently no description!"} </p>
       {mentor && (
         <button
           onClick={() => {
@@ -48,6 +42,7 @@ const AboutSection = ({
           header={"Offer Job"}
           subHeader={"Create and offer job to a mentor"}
           add={"job"}
+          id={_id}
         />
       )}
     </div>

@@ -3,7 +3,7 @@ import styles from "./startupOverview.module.css";
 
 const StartupOverview = ({
   mentors,
-  AssignedJobs,
+  assignedJobs,
   finishedJobs,
   startup,
   appliedJobs,
@@ -15,12 +15,16 @@ const StartupOverview = ({
           <h1>Quick Overview</h1>
           <p>In the last month</p>
           <div>
-            <h3>Total Mentors</h3>
+            <h3>Total Jobs</h3>
             <h2>{mentors}</h2>
           </div>
           <div>
             <h3>Total Assigned Jobs</h3>
-            <h2>{AssignedJobs}</h2>
+            <h2>{assignedJobs}</h2>
+          </div>
+          <div>
+            <h3>Jobs That You Have Applied</h3>
+            <h2>{appliedJobs}</h2>
           </div>
           <div className={styles.special}>
             <h3>Finished Jobs</h3>
@@ -37,7 +41,7 @@ const StartupOverview = ({
           </div>
           <div>
             <h3>Total Assigned Jobs</h3>
-            <h2>{AssignedJobs}</h2>
+            <h2>{assignedJobs}</h2>
           </div>
           <div>
             <h3>Jobs That You Have Applied</h3>
@@ -56,8 +60,8 @@ export default StartupOverview;
 
 StartupOverview.propTypes = {
   mentors: PropTypes.number,
-  AssignedJobs: PropTypes.number,
+  assignedJobs: PropTypes.number,
   finishedJobs: PropTypes.number,
-  AssignedJobs: PropTypes.number,
+  assignedJobs: PropTypes.number,
   startup: PropTypes.bool,
 };

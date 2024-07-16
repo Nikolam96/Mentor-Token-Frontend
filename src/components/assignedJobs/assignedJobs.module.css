@@ -1,25 +1,3 @@
-.assignedJobs {
-  text-align: center;
-  color: rgba(86, 106, 127, 1);
-}
-
-.assignedJobs ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-}
-
-.assignedJobs li {
-  padding: 0.3rem;
-  border-bottom: 3px solid var(--clr-light-violet-btn);
-  cursor: pointer;
-}
-
-.assignedJobs li:hover {
-  border-bottom: 3px solid var(--clr-purple-primary-400);
-  color: var(--clr-purple-primary-400);
-}
-
 .assignedJob {
   background-color: #fff;
   margin-block: 0.3rem;
@@ -30,6 +8,13 @@
   text-align: start;
   padding: 0.8rem 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: var(--transition--200);
+  cursor: pointer;
+}
+
+.assignedJob:hover h3 {
+  text-decoration: underline;
+  color: var(--clr-purple-primary-400);
 }
 
 .assignedJob .desc {
@@ -78,14 +63,14 @@
   color: #fff;
 }
 
-.assignedJob .observer,
-.offerContainer {
+.observer,
+.offer button {
   opacity: 0;
   transition: var(--transition--200);
   transform: translateY(20px);
 }
-.assignedJob .show,
-.pendingShow {
+.show,
+.offer .pendingShow {
   opacity: 1;
   transition: var(--transition--200);
   transform: translateY(0px);
@@ -97,29 +82,29 @@
 }
 .assignedJob:nth-child(2),
 .offerContainer:nth-child(2) {
-  transition: opacity 0.5s 250ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .assignedJob:nth-child(3),
 .offerContainer:nth-child(3) {
-  transition: opacity 0.5s 300ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .assignedJob:nth-child(4),
 .offerContainer:nth-child(4) {
-  transition: opacity 0.5s 350ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .assignedJob:nth-child(5),
 .offerContainer:nth-child(5) {
-  transition: opacity 0.5s 400ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .assignedJob:nth-child(6),
 .offerContainer:nth-child(6) {
-  transition: opacity 0.5s 450ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .assignedJob:nth-child(7),
 .offerContainer:nth-child(7) {
-  transition: opacity 0.5s 500ms ease;
+  transition: opacity 0.5s 200ms ease;
 }
 .assignedJob:nth-child(8),
 .offerContainer:nth-child(8) {
-  transition: opacity 0.5s 550ms ease;
+  transition: opacity 0.5s 200ms ease;
 }

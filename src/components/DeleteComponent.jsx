@@ -5,14 +5,13 @@ import PropTypes from "prop-types";
 import SpinnerSvg from "./SpinnerSvg";
 import useJobsApi from "../api/useJobsApi";
 
-const DeleteComponent = ({ setPortalUse, portalUse, header, id }) => {
+const DeleteComponent = ({ setPortalUse, portalUse, header, url }) => {
   const [fadeOut, setFadeOut] = useState(portalUse);
   const [error, setError] = useState(null);
   const deleteApi = useJobsApi(setError);
 
   const handleDelete = () => {
     const headers = "multipart/form-data";
-    const url = `deleteJob/${id}`;
     const fetchMethod = "delete";
     const data = {};
     deleteApi.mutate({ data, url, headers, fetchMethod });
@@ -73,7 +72,7 @@ DeleteComponent.propTypes = {
   setPortalUse: PropTypes.func.isRequired,
   portalUse: PropTypes.bool.isRequired,
   header: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default DeleteComponent;

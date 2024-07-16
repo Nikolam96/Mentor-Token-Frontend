@@ -7,9 +7,12 @@ const TopMentorElement = ({
   picture,
   name,
   achievedJobs,
-  index,
+  _id,
   click,
   setClick,
+  setJobsPage,
+  jobsPage,
+  index,
 }) => {
   const [hover, setHover] = useState(false);
   const { ref: myRef, inView: visible } = useInView({
@@ -21,14 +24,21 @@ const TopMentorElement = ({
     <div
       className={`${styles.topMentorElement} ${visible && styles.show} ${
         index === 0 && styles.favorite
-      } ${hover && styles.hover} ${click === index && styles.active}`}
+      } ${hover && styles.hover} ${click === _id && styles.active}`}
       onMouseEnter={() => {
         setHover(true);
       }}
       onMouseLeave={() => {
         setHover(false);
       }}
-      onClick={() => setClick(index)}
+      onClick={() => {
+        setClick(_id);
+        setJobsPage({
+          ...jobsPage,
+          url: `/getUserApplication/${_id}`,
+          page: "?page=1",
+        });
+      }}
       ref={myRef}
     >
       <div className={styles.card}>
@@ -49,4 +59,5 @@ TopMentorElement.propTypes = {
   name: PropTypes.string,
   achievedJobs: PropTypes.number,
   index: PropTypes.number,
+  _id: PropTypes.string,
 };

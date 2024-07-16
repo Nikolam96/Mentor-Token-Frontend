@@ -11,6 +11,9 @@
   transition: var(--transition--200);
 }
 
+.appliedMentor:hover {
+  cursor: pointer;
+}
 .mentorError {
   color: red;
 }

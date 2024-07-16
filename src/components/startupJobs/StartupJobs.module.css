@@ -42,6 +42,7 @@
 
 .startupJobs .red {
   background-color: var(--clr-purple-secondary-400);
+  transition: var(--transition--200);
 }
 @media (width > 550px) {
   .startupJobs {

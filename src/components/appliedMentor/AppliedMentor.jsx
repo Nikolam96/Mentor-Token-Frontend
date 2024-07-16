@@ -5,9 +5,9 @@ import useJobsApi from "../../api/useJobsApi";
 import { useState } from "react";
 import SpinnerSvg from "../SpinnerSvg";
 
-const AppliedMentor = ({ mentorId, createdAt, _id }) => {
+const AppliedMentor = ({ mentorId, createdAt }) => {
   const [error, setError] = useState(null);
-  const { name, picture } = mentorId;
+  const { name, picture, _id } = mentorId;
 
   const formattedDate = moment(createdAt).format("Do MMMM YYYY");
   const { ref: myRef, inView: visible } = useInView({
@@ -17,19 +17,21 @@ const AppliedMentor = ({ mentorId, createdAt, _id }) => {
 
   const updateApplicationApi = useJobsApi(setError);
 
-  const applicationAccept = () => {
+  const applicationAccept = (event) => {
+    event.stopPropagation();
     const headers = "application/json";
     const url = `updateApplication/${_id}`;
     const fetchMethod = "patch";
-    const data = { status: "accepted" };
+    const data = { status: "accepted", acceptedStatus: "in progress" };
     updateApplicationApi.mutate({ data, url, headers, fetchMethod });
   };
 
-  const applicationReject = () => {
+  const applicationReject = (event) => {
+    event.stopPropagation();
     const headers = "application/json";
     const url = `updateApplication/${_id}`;
     const fetchMethod = "patch";
-    const data = { status: "reject" };
+    const data = { status: "rejected", acceptedStatus: "rejected" };
     updateApplicationApi.mutate({ data, url, headers, fetchMethod });
   };
 
@@ -61,6 +63,9 @@ const AppliedMentor = ({ mentorId, createdAt, _id }) => {
     <div
       className={`${styles.appliedMentor} ${visible && styles.show}`}
       ref={myRef}
+      onClick={() => {
+        window.open(`/startup/mentors/${_id}`, "_blank");
+      }}
     >
       <img src={`http://127.0.0.1:10000/images/${picture}`} alt={name} />
       <div className={styles.bodyContainer}>
@@ -86,4 +91,5 @@ const AppliedMentor = ({ mentorId, createdAt, _id }) => {
     </div>
   );
 };
+
 export default AppliedMentor;
