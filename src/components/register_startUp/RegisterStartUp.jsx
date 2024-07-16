@@ -2,18 +2,18 @@ import { useRef, useState } from "react";
 import styles from "./register.module.css";
 import { useLocation } from "react-router-dom";
 import Spinner from "../SpinnerSvg";
-import RegisterMentorApi from "../../api/RegisterMentorApi";
+import PostApi from "../../api/PostApi";
 
 const Register = () => {
   const location = useLocation();
-  const form = location.state?.form;
+  const form = location.state?.user;
 
   const [user, setUser] = useState({
     ...form,
     startUpName: "",
-    legal_Representative: "",
+    name: "",
     businessAddress: "",
-    inviteMentors: "",
+    phone: "",
     selectedPhoto: null,
   });
 
@@ -46,7 +46,17 @@ const Register = () => {
     apiCall();
   };
 
-  const apiCall = RegisterMentorApi({ user, setSpinner, setError });
+  let headers = "multipart/form-data";
+
+  let url = "signup";
+
+  const apiCall = PostApi({
+    user,
+    setSpinner,
+    setError,
+    url,
+    headers,
+  });
 
   const handleCheckboxChange = (e) => {
     setIsButtonDisabled(!e.target.checked);
@@ -84,7 +94,7 @@ const Register = () => {
         />
       </div>
       {error && <p className={styles.red}>{error}</p>}
-      <Spinner spinner={spinner} />
+      <Spinner spinner={spinner} width={30} />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.input_container}>
           <label htmlFor="name" className={styles.label}>
@@ -99,22 +109,22 @@ const Register = () => {
               setError("");
             }}
             id="name"
-            placeholder="My Startup Name"
+            placeholder="My Startup or Company Name"
             autoComplete="off"
             required={true}
           />
         </div>
         <div>
           <label htmlFor="legal">
-            Legal Representative<span>*</span>
+            Name & Surname<span>*</span>
           </label>
           <input
             type="text"
-            name="legal_Representative"
-            value={user.legal_Representative}
+            name="name"
+            value={user.name}
             onChange={handleChange}
             id="legal"
-            placeholder="Name and surname"
+            placeholder="Name and Surname"
             autoComplete="off"
             required={true}
           />
@@ -135,15 +145,20 @@ const Register = () => {
           />
         </div>
         <div>
-          <label htmlFor="mentor">Invite Mentors via email</label>
+          <label htmlFor="phone">Phone</label>
+          <span>*</span>
           <input
-            type="email"
-            name="inviteMentors"
-            value={user.inviteMentors}
-            onChange={handleChange}
-            id="mentor"
-            placeholder="Enter email address to invite mentor"
-            autoComplete="off"
+            type="tel"
+            id="phone"
+            name="phone"
+            value={user.phone}
+            onChange={(e) => {
+              handleChange(e);
+              setError("");
+            }}
+            placeholder="+381 64 409 0111"
+            pattern="\+[0-9]{3} [0-9]{2} [0-9]{3} [0-9]{3,4}"
+            required
           />
           <input
             type="submit"

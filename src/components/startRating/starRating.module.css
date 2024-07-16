@@ -1,0 +1,30 @@
+.starRating {
+  display: flex;
+  direction: row;
+  align-items: center;
+}
+
+.starRating button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #d3d3d3;
+  transition: var(--transition--200);
+}
+
+.starRating button:focus {
+  outline: none;
+}
+
+.starRating .on {
+  color: var(--clr-purple-primary-400);
+}
+
+.starRating .off {
+  color: #d3d3d3;
+}
+
+.starRating .star {
+  font-size: 1.5rem;
+}

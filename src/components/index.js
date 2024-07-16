@@ -10,6 +10,17 @@ import Section2 from "./section2/Section2";
 import Section3 from "./section3/Section3";
 import Section4 from "./section4/Section4";
 import Box from "./box/Box";
+import TokenPage_navbar from "./tokenPage_navbar/TokenPage_navbar";
+import StartupDashboard from "./startupDashboard/StartupDashboard";
+import TopMentorSection from "./topMentorsSection/TopMentorSection";
+import StartupMentors from "./startupMentors/StartupMentors";
+import StartupMentorId from "./startupMentorId/StartupMentorId";
+import StartupJobs from "./startupJobs/StartupJobs";
+import MentorDashboard from "./mentorDashboard/MentorDashboard";
+import MentorStats from "./mentorStats/MentorStats";
+import MentorJobs from "./mentorJobs/MentorJobs";
+import Logout from "./Logout";
+import NotFound from "./notFound/NotFound";
 
 export {
   Navbar,
@@ -24,4 +35,15 @@ export {
   Section3,
   Section4,
   Box,
+  TokenPage_navbar,
+  StartupDashboard,
+  TopMentorSection,
+  StartupMentors,
+  StartupMentorId,
+  StartupJobs,
+  MentorDashboard,
+  MentorStats,
+  MentorJobs,
+  Logout,
+  NotFound,
 };

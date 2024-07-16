@@ -1,5 +1,6 @@
 import styles from "./section1.module.css";
 import "../../App.css";
+import ButtonSvg from "../ButtonSvg";
 
 const Section1 = () => {
   return (
@@ -14,16 +15,8 @@ const Section1 = () => {
             to drive the success of the ventures they support.
           </p>
           <div className={styles.btn_align}>
-            <a href="/login" className={`${styles.btn}`} data-type="gap">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#fff"
-              >
-                <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
-              </svg>
+            <a href="/register" className={`${styles.btn}`} data-type="gap">
+              <ButtonSvg width={24} fill={"#fff"} />
               Get Started
             </a>
             <a

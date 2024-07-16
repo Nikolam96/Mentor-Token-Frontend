@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./login.module.css";
 import { useState } from "react";
-import LoginApi from "../../api/LoginApi";
+// import LoginApi from "../../api/LoginApi";
+import PostApi from "../../api/PostApi";
 import SpinnerSvg from "../SpinnerSvg";
 
 const Login = () => {
@@ -16,7 +17,14 @@ const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const apiCall = LoginApi({ user, setSpinner, setError });
+  let url = "login";
+
+  const apiCall = PostApi({
+    user,
+    setSpinner,
+    setError,
+    url,
+  });
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -31,7 +39,7 @@ const Login = () => {
       </div>
 
       {error && <p className={styles.red}>{error}</p>}
-      <SpinnerSvg spinner={spinner} />
+      <SpinnerSvg spinner={spinner} width={30} />
 
       <form action="" className={styles.form}>
         <div className={styles.input_container}>
@@ -39,22 +47,26 @@ const Login = () => {
             Email
           </label>
           <input
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              setError("");
+            }}
             value={user.email}
             type="email"
             name="email"
             id="email"
             placeholder="mentortoken@gmail.com"
-            autoComplete="off"
           />
         </div>
         <input
-          onChange={handleChange}
+          onChange={(e) => {
+            handleChange(e);
+            setError("");
+          }}
           value={user.password}
           type="password"
           name="password"
           placeholder="Password"
-          autoComplete="off"
         />
         <input type="submit" value="Log in" onClick={handleClick} />
       </form>

@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./navbar.module.css";
 import "../../App.css";
 import { useState, useEffect } from "react";
+import ButtonSvg from "../ButtonSvg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -79,20 +80,12 @@ const Navbar = () => {
         </li>
         <li className={styles.btn}>
           <NavLink
-            to="/login"
+            to="/register"
             className={({ isActive }) => {
               return isActive ? `${styles.active}` : ``;
             }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#fff"
-            >
-              <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
-            </svg>
+            <ButtonSvg width={24} fill={"#fff"} />
             Get Started
           </NavLink>
         </li>

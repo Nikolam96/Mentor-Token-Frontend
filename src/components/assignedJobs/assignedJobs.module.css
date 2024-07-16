@@ -1,0 +1,110 @@
+.assignedJob {
+  background-color: #fff;
+  margin-block: 0.3rem;
+  color: rgba(86, 106, 127, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: var(--transition--200);
+  cursor: pointer;
+}
+
+.assignedJob:hover h3 {
+  text-decoration: underline;
+  color: var(--clr-purple-primary-400);
+}
+
+.assignedJob .desc {
+  width: 50%;
+}
+
+.assignedJob .done {
+  color: rgba(49, 170, 39, 1);
+  background-color: rgba(49, 170, 39, 0.2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+}
+
+.assignedJob .rejected {
+  color: rgba(242, 7, 106, 1);
+  background-color: rgba(242, 7, 106, 0.2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+}
+
+.assignedJob .progress {
+  color: rgba(105, 108, 255, 1);
+  background-color: rgba(105, 108, 255, 0.2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+}
+
+.offer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+.offer button {
+  border: 2px solid rgba(242, 7, 106, 1);
+  color: rgba(242, 7, 106, 1);
+  background-color: transparent;
+  border-radius: 0.3rem;
+  transition: var(--transition--200);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.offer button:hover {
+  background-color: rgba(242, 7, 106, 1);
+  color: #fff;
+}
+
+.observer,
+.offer button {
+  opacity: 0;
+  transition: var(--transition--200);
+  transform: translateY(20px);
+}
+.show,
+.offer .pendingShow {
+  opacity: 1;
+  transition: var(--transition--200);
+  transform: translateY(0px);
+}
+
+.assignedJob :nth-child(1),
+.offerContainer:nth-child(1) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(2),
+.offerContainer:nth-child(2) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(3),
+.offerContainer:nth-child(3) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(4),
+.offerContainer:nth-child(4) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(5),
+.offerContainer:nth-child(5) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(6),
+.offerContainer:nth-child(6) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(7),
+.offerContainer:nth-child(7) {
+  transition: opacity 0.5s 200ms ease;
+}
+.assignedJob:nth-child(8),
+.offerContainer:nth-child(8) {
+  transition: opacity 0.5s 200ms ease;
+}

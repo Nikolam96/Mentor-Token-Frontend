@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import styles from "./register.module.css";
 import { Link } from "react-router-dom";
 import SpinnerSvg from "../SpinnerSvg";
-import RegisterApi from "../../api/RegisterApi";
+// import RegisterApi from "../../api/RegisterApi";
+import PostApi from "../../api/PostApi";
 import CheckSvg from "../CheckSvg";
 
 const Register = () => {
-  const [form, setForm] = useState({
+  const [user, setUser] = useState({
     password: "",
     email: "",
     role: "startup",
@@ -16,17 +17,17 @@ const Register = () => {
   const [spinner, setSpinner] = useState(false);
 
   const isDisabled =
-    !/[a-z]/.test(form.password) ||
-    !/[A-Z]/.test(form.password) ||
-    form.password.length <= 8 ||
-    !/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(form.password);
+    !/[a-z]/.test(user.password) ||
+    !/[A-Z]/.test(user.password) ||
+    user.password.length <= 8 ||
+    !/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(user.password);
 
   useEffect(() => {
     setIsButtonDisabled(isDisabled);
-  }, [form.password]);
+  }, [user.password]);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleClick = (event) => {
@@ -34,7 +35,11 @@ const Register = () => {
     apiCall();
   };
 
-  const apiCall = RegisterApi({ form, setSpinner, setError });
+  let url = "checkEmail";
+  let navigateUrl =
+    user.role === "mentor" ? "/register-mentor" : "/register-start-up";
+
+  const apiCall = PostApi({ user, setSpinner, setError, url, navigateUrl });
 
   return (
     <div className={styles.register}>
@@ -46,25 +51,25 @@ const Register = () => {
       <div className={styles.btn_container}>
         <button
           className={`${styles.btn} ${
-            form.role === "startup" && styles.active
+            user.role === "startup" && styles.active
           }`}
           onClick={() => {
-            setForm({ ...form, role: "startup" });
+            setUser({ ...user, role: "startup" });
           }}
         >
           Startup
         </button>
         <button
-          className={`${styles.btn} ${form.role === "mentor" && styles.active}`}
+          className={`${styles.btn} ${user.role === "mentor" && styles.active}`}
           onClick={() => {
-            setForm({ ...form, role: "mentor" });
+            setUser({ ...user, role: "mentor" });
           }}
         >
           Mentor
         </button>
       </div>
       {error && <p className={styles.red}>{error}</p>}
-      <SpinnerSvg spinner={spinner} />
+      <SpinnerSvg spinner={spinner} width={30} />
 
       <form action="" className={styles.form}>
         <div className={styles.input_container}>
@@ -72,7 +77,7 @@ const Register = () => {
             Email
           </label>
           <input
-            value={form.email}
+            value={user.email}
             type="email"
             name="email"
             id="email"
@@ -87,7 +92,7 @@ const Register = () => {
         <div>
           <label htmlFor="password">Password</label>
           <input
-            value={form.password}
+            value={user.password}
             type="password"
             name="password"
             id="password"
@@ -100,25 +105,25 @@ const Register = () => {
           <div className={styles.check_container}>
             <p
               className={`${
-                /[a-z]/.test(form.password) &&
-                /[A-Z]/.test(form.password) &&
+                /[a-z]/.test(user.password) &&
+                /[A-Z]/.test(user.password) &&
                 styles.opacity
               }`}
             >
               <CheckSvg />
               Password Strength : Weak
             </p>
-            <p className={`${form.email !== form.password && styles.opacity}`}>
+            <p className={`${user.email !== user.password && styles.opacity}`}>
               <CheckSvg />
               Cannot contain your name or email address
             </p>
-            <p className={`${form.password.length > 8 && styles.opacity}`}>
+            <p className={`${user.password.length > 8 && styles.opacity}`}>
               <CheckSvg />
               At least 8 characters
             </p>
             <p
               className={`${
-                form.password.match(
+                user.password.match(
                   /[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
                 ) && styles.opacity
               }`}

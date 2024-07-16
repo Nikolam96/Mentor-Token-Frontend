@@ -1,0 +1,75 @@
+.appliedMentor {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 1rem 0.8rem;
+  opacity: 0;
+  transition: var(--transition--200);
+}
+
+.appliedMentor:hover {
+  cursor: pointer;
+}
+.mentorError {
+  color: red;
+}
+
+.appliedMentor .bodyContainer {
+  margin-right: auto;
+}
+
+.appliedMentor .btnContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.appliedMentor ul li {
+  text-decoration: underline;
+}
+
+.appliedMentor img {
+  width: 70px;
+  border-radius: 1rem;
+}
+
+.appliedMentor .assign {
+  background-color: var(--clr-purple-primary-400);
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  color: #fff;
+  transition: var(--transition--200);
+}
+
+.appliedMentor .assign:hover {
+  background-color: var(--clr-purple-hover-400);
+  cursor: pointer;
+}
+
+.appliedMentor .reject {
+  background-color: #fff;
+  border: 2px solid rgba(242, 7, 106, 1);
+  border-radius: 0.3rem;
+  color: rgba(242, 7, 106, 1);
+  padding: 0.4rem 0.8rem;
+  transition: var(--transition--200);
+}
+
+.appliedMentor .reject:hover {
+  background-color: rgba(242, 7, 106, 1);
+  color: #fff;
+  cursor: pointer;
+}
+
+.appliedMentor h2 {
+  padding-bottom: 0.5rem;
+}
+
+.show {
+  opacity: 1;
+}

@@ -1,15 +1,16 @@
-const SpinnerSvg = ({ spinner }) => {
+import PropTypes from "prop-types";
+
+const SpinnerSvg = ({ spinner, width }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
-      width="30"
-      height="30"
+      width={width}
+      height={width}
       style={{
         shapeRendering: "auto",
         display: `${!spinner ? "none" : "block"}`,
-        background: "rgb(255, 255, 255)",
       }}
     >
       <g>
@@ -34,5 +35,10 @@ const SpinnerSvg = ({ spinner }) => {
       </g>
     </svg>
   );
+};
+
+SpinnerSvg.propTypes = {
+  spinner: PropTypes.bool,
+  width: PropTypes.number,
 };
 export default SpinnerSvg;

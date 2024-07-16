@@ -1,0 +1,147 @@
+.addMentor {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  max-width: 36rem;
+  position: relative;
+  /* min-height: 90%; */
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: rgba(86, 106, 127, 1);
+  fill: var(--clr-purple-primary-400);
+}
+
+.container h1 {
+  padding-block: 1.2rem;
+}
+
+.container p {
+  color: rgba(86, 106, 127, 1);
+  padding-bottom: 0.3rem;
+}
+
+.container h1,
+.container p {
+  text-align: center;
+}
+
+.container .exit {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background-color: transparent;
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition--200);
+  padding-block: 0.3rem;
+}
+
+.container .exit:hover {
+  background-color: var(--clr-purple-hover-400--2);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.container input,
+.container textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--b-radius-btn);
+  outline: none;
+  border: 2px solid rgba(211, 211, 255, 1);
+  padding: 12px;
+  transition: var(--transition--200);
+  font-size: 15px;
+  resize: none;
+}
+
+.container input:focus,
+.container textarea:focus {
+  border: 2px solid rgba(105, 108, 255, 1);
+}
+
+.container .label {
+  font-size: 15px;
+  color: var(--clr-purple-primary-400);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.container .createMentor {
+  margin-top: 1rem;
+  background-color: var(--clr-purple-primary-400);
+  border: none;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.3rem;
+  transition: var(--transition--200);
+  width: 100%;
+}
+
+.container .createMentor:hover {
+  cursor: pointer;
+  background-color: var(--clr-purple-hover-400);
+}
+
+.container .block {
+  display: block;
+}
+
+.container .none {
+  display: none;
+}
+
+.addMentor .error {
+  color: red;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.addMentor.show {
+  animation: fadeIn 0.5s forwards;
+}
+
+.addMentor.hide {
+  animation: fadeOut 0.5s forwards;
+}
+
+@media (min-width: 768px) {
+  .container .flexContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

@@ -101,7 +101,13 @@ select {
   --clr-light: #fff;
   --clr-purple-primary-400: #696cff;
   --clr-purple-hover-400: rgba(105 108 255 / 0.8);
+  --clr-purple-hover-400--2: rgba(105 108 255 / 0.2);
   --clr-purple-secondary-400: rgba(120, 122, 130, 1);
+  --clr-light-green-400: rgba(245, 245, 249, 1);
+
+  --clr-light-green-btn: rgba(235, 246, 235, 1);
+  --clr-light-violet-btn: rgba(211, 211, 255, 0.5);
+  --clr-red-violet-btn: rgba(255, 240, 243, 1);
 
   --fs-280: 1.2rem;
 

@@ -1,0 +1,57 @@
+.mentorDashboard {
+  display: grid;
+  gap: 1rem;
+}
+
+.applicationContainer h3 {
+  padding-block: 1rem;
+  color: rgba(86, 106, 127, 1);
+}
+
+.mentorDashboard .assignedJobs {
+  grid-row: span 2;
+}
+
+.pagination button {
+  background-color: var(--clr-purple-primary-400);
+  color: #fff;
+  fill: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.3rem;
+  transition: var(--transition--200);
+  cursor: pointer;
+  gap: 0.1rem;
+}
+
+.pagination button:hover {
+  background-color: var(--clr-purple-hover-400);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pagination .red {
+  background-color: var(--clr-purple-secondary-400);
+}
+
+@media (width > 768px) {
+  .mentorDashboard {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+@media (width > 992px) {
+  .mentorDashboard {
+    width: unset;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
