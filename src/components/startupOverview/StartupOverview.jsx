@@ -22,10 +22,7 @@ const StartupOverview = ({
             <h3>Total Assigned Jobs</h3>
             <h2>{assignedJobs}</h2>
           </div>
-          <div>
-            <h3>Jobs That You Have Applied</h3>
-            <h2>{appliedJobs}</h2>
-          </div>
+
           <div className={styles.special}>
             <h3>Finished Jobs</h3>
             <h2>{finishedJobs}</h2>
@@ -62,6 +59,5 @@ StartupOverview.propTypes = {
   mentors: PropTypes.number,
   assignedJobs: PropTypes.number,
   finishedJobs: PropTypes.number,
-  assignedJobs: PropTypes.number,
   startup: PropTypes.bool,
 };

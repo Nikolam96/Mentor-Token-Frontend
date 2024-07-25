@@ -21,7 +21,6 @@ const PostApi = ({ user, setSpinner, setError, navigateUrl, url, headers }) => {
       const token = data?.data?.token;
       if (token) {
         const decodedToken = decodeToken(token);
-        console.log(decodedToken);
         setUserStorage(
           token,
           decodedToken.id,
@@ -30,10 +29,9 @@ const PostApi = ({ user, setSpinner, setError, navigateUrl, url, headers }) => {
           decodedToken.startUpName,
           decodedToken.picture
         );
-        console.log(decodedToken);
         if (decodedToken.role == "mentor") {
           setSpinner(false);
-          return navigate("/mentor/dashboard");
+          return navigate("/mentor/dashboard", { state: { user } });
         }
         if (decodedToken.role == "startup") {
           setSpinner(false);

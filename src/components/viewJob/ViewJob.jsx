@@ -3,8 +3,20 @@ import ReactDOM from "react-dom";
 import styles from "./viewJob.module.css";
 import axios from "axios";
 import moment from "moment";
+import { getId } from "../../config/StorageFunctions";
+import JobsApi from "../../api/useJobsApi";
 
-const ViewJob = ({ setPortal, portal, jobId, status }) => {
+const ViewJob = ({
+  setPortal,
+  portal,
+  jobId,
+  status,
+  jobPicture,
+  companyId,
+  updatedAt,
+  _id,
+  refetch,
+}) => {
   const [fadeOut, setFadeOut] = useState(portal);
   const [job, setJob] = useState({});
   const [error, setError] = useState("");
@@ -24,12 +36,22 @@ const ViewJob = ({ setPortal, portal, jobId, status }) => {
     fetchJob();
   }, []);
 
-  const handleClose = (e) => {
-    e.stopPropagation();
+  const handleClose = () => {
     setFadeOut(false);
     setTimeout(() => {
       setPortal(!portal);
     }, 500);
+  };
+
+  const updateJobApi = JobsApi(setError, handleClose);
+
+  const updateJob = () => {
+    let headers = "multipart/form-data";
+    let url = `updateApplication/${_id}`;
+    let fetchMethod = "patch";
+    const data = { acceptedStatus: "done" };
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
+    refetch();
   };
 
   const formattedDate = (date) => {
@@ -64,7 +86,7 @@ const ViewJob = ({ setPortal, portal, jobId, status }) => {
             </p>
             {status === "done" && (
               <p className={styles.jobDetail}>
-                <strong>Finished At:</strong> {formattedDate(job.updatedAt)}
+                <strong>Finished At:</strong> {formattedDate(updatedAt)}
               </p>
             )}
             <h2 className={styles.companyTitle}>Company:</h2>
@@ -87,9 +109,18 @@ const ViewJob = ({ setPortal, portal, jobId, status }) => {
             </div>
           </>
         )}
-        <button onClick={handleClose} className={styles.closeButton}>
-          Close
-        </button>
+        <button onClick={handleClose}>Close</button>
+        {companyId == getId() && status == "in progress" && (
+          <>
+            <button
+              onClick={updateJob}
+              className={styles.closeButton}
+              datatype="finished"
+            >
+              Finished
+            </button>
+          </>
+        )}
       </div>
     </div>,
     document.body

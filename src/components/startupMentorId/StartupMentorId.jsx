@@ -10,13 +10,14 @@ import AssignedJob from "../assignedJobs/AssignedJobs";
 
 const StartupMentorId = () => {
   const { id } = useParams();
+  const [active, setActive] = useState("all");
 
   const [userPage, setUserPage] = useState({
     page: "?page=1",
     url: `/getUser/${id}`,
   });
   const [pendingPage, setPendingPage] = useState({
-    page: "?page=1",
+    page: "?page=1&applicationType=companyToMentor",
     url: `/getUserPendingApplication/${id}`,
   });
   const [jobsPage, setJobsPage] = useState({
@@ -50,6 +51,14 @@ const StartupMentorId = () => {
   const jobs = jobsData?.jobs?.docs || [];
   const jobsDocs = jobsData?.jobs || {};
 
+  const handleFilter = (status) => {
+    setJobsPage({
+      ...jobsPage,
+      page: `?page=1&limit=10&acceptedStatus=${status}`,
+      url: `/getUserApplication/${id}`,
+    });
+  };
+
   return (
     <div className={styles.startupMentorId}>
       <SpinnerSvg spinner={isLoading} width={50} />
@@ -68,6 +77,45 @@ const StartupMentorId = () => {
             {!isJobsLoading && !jobsError && jobs && (
               <>
                 <h1>Assigned Jobs</h1>
+                <ul className={styles.jobsList}>
+                  <li
+                    onClick={() => {
+                      setActive("all");
+                      handleFilter("");
+                    }}
+                    className={active == "all" ? styles.active : ""}
+                  >
+                    All
+                  </li>
+                  <li
+                    onClick={() => {
+                      setActive("done");
+                      handleFilter("done");
+                    }}
+                    className={active == "done" ? styles.active : ""}
+                  >
+                    Done
+                  </li>
+                  <li
+                    onClick={() => {
+                      setActive("rejected");
+                      handleFilter("rejected");
+                    }}
+                    className={active == "rejected" ? styles.active : ""}
+                  >
+                    Rejected
+                  </li>
+                  <li
+                    onClick={() => {
+                      setActive("in progress");
+                      handleFilter("in progress");
+                    }}
+                    className={active == "in progress" ? styles.active : ""}
+                  >
+                    In Progress
+                  </li>
+                </ul>
+
                 {jobs.length === 0 && (
                   <h2>There are currently no assigned jobs!</h2>
                 )}
@@ -79,24 +127,38 @@ const StartupMentorId = () => {
             {jobsDocs.totalDocs > jobsDocs.limit && (
               <div className={styles.pagination}>
                 <button
-                  onClick={() =>
-                    setJobsPage({
-                      ...jobsPage,
-                      page: `?page=${jobsDocs.page - 1}`,
-                    })
-                  }
+                  onClick={() => {
+                    active == "all"
+                      ? setJobsPage({
+                          ...jobsPage,
+                          page: `?page=${jobsDocs.page - 1}&limit=8`,
+                        })
+                      : setJobsPage({
+                          ...jobsPage,
+                          page: `?page=${
+                            jobsDocs.page - 1
+                          }&limit=8&acceptedStatus=${active}`,
+                        });
+                  }}
                   disabled={!jobsDocs?.hasPrevPage}
                   className={!jobsDocs?.hasPrevPage ? styles.red : ""}
                 >
                   Previous Page
                 </button>
                 <button
-                  onClick={() =>
-                    setJobsPage({
-                      ...jobsPage,
-                      page: `?page=${jobsDocs.page + 1}`,
-                    })
-                  }
+                  onClick={() => {
+                    active == "all"
+                      ? setJobsPage({
+                          ...jobsPage,
+                          page: `?page=${jobsDocs.page + 1}&limit=8`,
+                        })
+                      : setJobsPage({
+                          ...jobsPage,
+                          page: `?page=${
+                            jobsDocs.page + 1
+                          }&limit=8&acceptedStatus=${active}`,
+                        });
+                  }}
                   disabled={!jobsDocs?.hasNextPage}
                   className={!jobsDocs?.hasNextPage ? styles.red : ""}
                 >

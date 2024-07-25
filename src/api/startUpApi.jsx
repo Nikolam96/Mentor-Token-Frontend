@@ -11,7 +11,7 @@ const fetchJobs = async ({ queryKey }) => {
 
 const startUpApi = (currentPage, url) => {
   return useQuery({
-    queryKey: [url, currentPage],
+    queryKey: [url, currentPage, "jobs"],
     queryFn: fetchJobs,
     enabled: false,
   });

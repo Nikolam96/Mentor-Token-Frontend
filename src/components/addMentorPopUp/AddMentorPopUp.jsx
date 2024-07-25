@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 import SpinnerSvg from "../SpinnerSvg";
 import { getId } from "../../config/StorageFunctions";
 import useJobsApi from "../../api/useJobsApi";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import api from "../../config/properties";
 
 const AddMentorPopUp = ({
   setPortalUse,
@@ -24,7 +27,6 @@ const AddMentorPopUp = ({
   const [data, setData] = useState({
     email: "",
     name: "",
-    surname: "",
     title: title || "",
     description: description || "",
     status: "open",
@@ -56,7 +58,6 @@ const AddMentorPopUp = ({
     let headers = "multipart/form-data";
     let url = `offerJob`;
     let fetchMethod = "post";
-
     updateJobApi.mutate({ data, url, headers, fetchMethod });
   };
 
@@ -80,6 +81,22 @@ const AddMentorPopUp = ({
     }
   };
 
+  const {
+    isSuccess,
+    isPending,
+    isError,
+    error: mentorError,
+    mutate,
+  } = useMutation({
+    mutationFn: async () => {
+      return await axios.post(`${api.url_base}/createMentorFromStartup`, data);
+    },
+  });
+
+  const handleNewMentor = () => {
+    mutate();
+  };
+
   const photoRef = useRef(null);
 
   const handleData = (e) => {
@@ -96,8 +113,12 @@ const AddMentorPopUp = ({
       <div className={`${styles.container} `}>
         <h1>{header}</h1>
         <p>{subHeader}</p>
-        <SpinnerSvg width={50} spinner={updateJobApi.isPending} />
-        {error && <p className={styles.error}>{error}</p>}
+        <SpinnerSvg width={50} spinner={isPending} />
+        {isError && (
+          <p className={styles.error}>
+            {mentorError?.response?.data?.error?.message}
+          </p>
+        )}
         <div className={`${add === "mentor" ? styles.block : styles.none}`}>
           <div className={styles.inputCont}>
             <label htmlFor="email" className={styles.label}>
@@ -117,7 +138,7 @@ const AddMentorPopUp = ({
           <div className={styles.flexContainer}>
             <div>
               <label htmlFor="name" className={styles.label}>
-                Name
+                Name & Surname
               </label>
               <input
                 type="text"
@@ -125,29 +146,38 @@ const AddMentorPopUp = ({
                 name="name"
                 value={data.name}
                 onChange={handleData}
-                placeholder="Mira"
-                required={true}
-                autoComplete="off"
-              />
-            </div>
-            <div>
-              <label htmlFor="surname" className={styles.label}>
-                Surname
-              </label>
-              <input
-                type="text"
-                id="surname"
-                value={data.surname}
-                onChange={handleData}
-                name="surname"
-                placeholder="Gedit"
+                placeholder="Mira Geddit"
                 required={true}
                 autoComplete="off"
               />
             </div>
           </div>
-          <button className={styles.createMentor}>Create new Mentor</button>
+          <button
+            className={styles.createMentor}
+            onClick={handleNewMentor}
+            disabled={isSuccess}
+            style={
+              isSuccess ? { backgroundColor: "rgba(120, 122, 130, 1)" } : {}
+            }
+          >
+            Create new Mentor
+          </button>
+          {isSuccess && (
+            <div className={styles.checkEmail}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="30px"
+                viewBox="0 -960 960 960"
+                width="30px"
+                fill="green"
+              >
+                <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+              </svg>
+              <h3>Check your email!</h3>
+            </div>
+          )}
         </div>
+
         <div className={`${add === "job" ? styles.block : styles.none}`}>
           <input
             ref={photoRef}

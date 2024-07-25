@@ -16,8 +16,6 @@ const StartupMentors = () => {
   const stats = usersData || {};
   const pagination = usersData?.users || {};
 
-  console.log(pagination);
-
   const handleNextPage = () => {
     setCurrentPage((prev) => prev + 1);
   };
@@ -42,8 +40,8 @@ const StartupMentors = () => {
             <div className={styles.pagination}>
               <button
                 onClick={handlePrevPage}
-                disabled={!pagination?.hasPreviousPage}
-                className={!pagination?.hasPreviousPage ? styles.red : ""}
+                disabled={!pagination?.hasPrevPage}
+                className={!pagination?.hasPrevPage ? styles.red : ""}
               >
                 Previous Page
               </button>
@@ -58,9 +56,9 @@ const StartupMentors = () => {
           )}
         </div>
         <StartupOverview
-          mentors={stats.totalUsers}
-          AssignedJobs={stats.totalJobs}
-          finishedJobs={stats.finishedJobs}
+          mentors={stats.totalUsers || 0}
+          assignedJobs={stats.totalJobs || 0}
+          finishedJobs={stats.finishedJobs || 0}
           startup={true}
         />
       </div>

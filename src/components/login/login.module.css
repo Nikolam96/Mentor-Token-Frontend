@@ -81,6 +81,19 @@ input:-webkit-autofill {
   color: var(--clr-purple-primary-400);
 }
 
+.label[datatype="password"] {
+  width: 28%;
+}
+
+.login .forgotPass {
+  display: flex;
+  align-items: center;
+}
+
+.login .disabled {
+  background-color: var(--clr-purple-secondary-400);
+}
+
 .violet {
   color: var(--clr-purple-primary-400);
 }
@@ -90,6 +103,19 @@ input:-webkit-autofill {
 }
 .red {
   color: red;
+}
+
+.login button[type="button"] {
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding-block: 0.3rem;
+  border: none;
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 7rem;
 }
 
 @media (width > 992px) {

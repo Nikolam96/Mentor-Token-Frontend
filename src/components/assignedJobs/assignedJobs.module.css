@@ -10,6 +10,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: var(--transition--200);
   cursor: pointer;
+  border-radius: 0.5rem;
 }
 
 .assignedJob:hover h3 {
@@ -23,23 +24,26 @@
 
 .assignedJob .done {
   color: rgba(49, 170, 39, 1);
-  background-color: rgba(49, 170, 39, 0.2);
+  background-color: rgba(49, 170, 39, 0.18);
   padding: 0.5rem 0.8rem;
   border-radius: 0.25rem;
+  font-weight: 500;
 }
 
 .assignedJob .rejected {
   color: rgba(242, 7, 106, 1);
-  background-color: rgba(242, 7, 106, 0.2);
+  background-color: rgba(242, 7, 106, 0.18);
   padding: 0.5rem 0.8rem;
   border-radius: 0.25rem;
+  font-weight: 500;
 }
 
 .assignedJob .progress {
   color: rgba(105, 108, 255, 1);
-  background-color: rgba(105, 108, 255, 0.2);
+  background-color: rgba(105, 108, 255, 0.18);
   padding: 0.5rem 0.8rem;
   border-radius: 0.25rem;
+  font-weight: 500;
 }
 
 .offer {
@@ -61,6 +65,10 @@
 .offer button:hover {
   background-color: rgba(242, 7, 106, 1);
   color: #fff;
+}
+
+.yourJob {
+  border: 3px solid var(--clr-purple-primary-400);
 }
 
 .observer,

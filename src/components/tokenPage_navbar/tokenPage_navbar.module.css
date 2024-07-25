@@ -79,7 +79,7 @@
   fill: var(--clr-purple-primary-400);
 }
 
-@media (width > 800px) {
+@media (width > 821px) {
   .navigation {
     display: flex;
     justify-content: space-around;

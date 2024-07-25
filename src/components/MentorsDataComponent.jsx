@@ -3,10 +3,13 @@ import styles from "./startupMentors/startupMentors.module.css";
 import StarRating from "./startRating/StarRating";
 import { NavLink } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import { Rating } from "react-simple-star-rating";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getId } from "../config/StorageFunctions";
 
 const MentorsDataComponent = ({ mentor }) => {
   const { name, picture, skills, _id, description, email } = mentor;
-  console.log();
 
   const { ref: myRef, inView: visible } = useInView({
     threshold: 0.5,
@@ -14,6 +17,42 @@ const MentorsDataComponent = ({ mentor }) => {
   });
 
   const newDescription = description?.substring(0, 45);
+
+  const [rating, setRating] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  const mentorRate = async () => {
+    const response = await axios.post(
+      "http://localhost:10000/api/v1/rateMentor",
+      {
+        mentorId: _id,
+      }
+    );
+    setRating(response?.data?.avg);
+    setTotal(response?.data?.total);
+  };
+
+  const setMentorRate = async (rate) => {
+    const response = await axios.patch(
+      "http://localhost:10000/api/v1/rateMentor",
+      {
+        mentorId: _id,
+        companyId: getId(),
+        rating: rate,
+      }
+    );
+
+    setRating(response?.data?.avg);
+    setTotal(response?.data?.total);
+  };
+
+  useEffect(() => {
+    mentorRate();
+  }, []);
+
+  const handleRating = (rate) => {
+    setMentorRate(rate);
+  };
 
   return (
     <div
@@ -24,7 +63,17 @@ const MentorsDataComponent = ({ mentor }) => {
         <img src="../../public/id1.png" alt={name} />
         <div>
           <h2>{name}</h2>
-          {/* <StarRating totalStars={5} /> */}
+          <Rating
+            size={25}
+            fillColor="#696cff"
+            onClick={handleRating}
+            initialValue={rating}
+            emptyColor="rgba(105 108 255 / 0.2)"
+          />
+          <span className={styles.ratingSpan}>
+            {total} average based on KPI success rate.
+          </span>
+
           <ul>
             <h4>Skills :</h4>
             {skills.map((skill, index) => (

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./login.module.css";
 import { useState } from "react";
-// import LoginApi from "../../api/LoginApi";
 import PostApi from "../../api/PostApi";
 import SpinnerSvg from "../SpinnerSvg";
 
@@ -75,6 +74,12 @@ const Login = () => {
           Don’t have account?
           <Link href="#" className={styles.violet} to={"/register"}>
             Register.
+          </Link>
+        </p>
+        <p>
+          Forgot Password?
+          <Link href="#" className={styles.violet} to={"/forgotPassword"}>
+            Click here!
           </Link>
         </p>
       </div>

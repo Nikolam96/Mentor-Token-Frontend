@@ -112,6 +112,12 @@
   font-weight: 500;
 }
 
+.addMentor .checkEmail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -138,10 +144,8 @@
   animation: fadeOut 0.5s forwards;
 }
 
-@media (min-width: 768px) {
-  .container .flexContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+@media (width > 786px) {
+  .inputCont {
+    width: 30rem;
   }
 }

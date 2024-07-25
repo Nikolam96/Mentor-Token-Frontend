@@ -1,31 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "./startupInput.module.css";
 import axios from "axios";
+import { getRole } from "../../config/StorageFunctions";
 
 const StartupInput = ({ placeholder, img, name, role }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
-
-  const fetchData = async () => {
+  const fetchData = async (term) => {
     const response = await axios.get(
-      `http://localhost:10000/api/v1/searchMentors?q=${query}`
+      `http://localhost:10000/api/v1/searchMentors?q=${term}`
     );
     setResults(response?.data);
-    console.log(response.data);
   };
 
-  useEffect(() => {
-    if (query.length >= 1) {
-      fetchData();
-    }
-    if (query.length === 0) {
-      setResults([]);
-    }
-  }, [query]);
+  const searchMentor = () => {
+    let timeoutId;
+    return (e) => {
+      let searchedTerm = e.target.value;
+      if (searchedTerm == "") {
+        setQuery(searchedTerm);
+        return;
+      }
+      setQuery(searchedTerm);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        fetchData(searchedTerm);
+      }, 500);
+    };
+  };
+
+  const debounce = useMemo(() => searchMentor(), []);
 
   return (
     <>
@@ -35,35 +40,53 @@ const StartupInput = ({ placeholder, img, name, role }) => {
             className={styles.input}
             type="text"
             placeholder={placeholder}
-            onChange={handleChange}
             value={query}
+            onChange={debounce}
           />
         </div>
 
-        <div className={styles.smallProfile}>
-          <img src={img || "../../../public/avater_picture.png"} alt="avatar" />
-          <div>
-            <p>{name || "user"}</p>
-            <p className={styles.role}>{role || "role"}</p>
+        <a
+          href={
+            getRole() == "startup"
+              ? "/startup/personalData"
+              : "/mentor/personalData"
+          }
+        >
+          <div className={styles.smallProfile}>
+            <img
+              src={img || "../../../public/avater_picture.png"}
+              alt="avatar"
+            />
+
+            <div>
+              <p>{name || "user"}</p>
+              <p className={styles.role}>{role || "role"}</p>
+            </div>
           </div>
+        </a>
+      </div>
+      {results.length > 0 && (
+        <div
+          className={`${styles.searchContainer} ${
+            query.length >= 1 ? styles.active : ""
+          }`}
+        >
+          {results.length > 0 &&
+            results.map((mentor) => (
+              <a
+                key={mentor._id}
+                href={
+                  getRole() == "startup"
+                    ? `/startup/mentors/${mentor._id}`
+                    : `/mentor/mentors/${mentor._id}`
+                }
+                className={styles.resultItem}
+              >
+                {mentor.name}
+              </a>
+            ))}
         </div>
-      </div>
-      <div
-        className={`${styles.searchContainer} ${
-          query.length >= 1 ? styles.active : ""
-        }`}
-      >
-        {results.length > 0 &&
-          results.map((mentor) => (
-            <a
-              key={mentor._id}
-              href={`/startup/mentors/${mentor._id}`}
-              className={styles.resultItem}
-            >
-              {mentor.name}
-            </a>
-          ))}
-      </div>
+      )}
     </>
   );
 };

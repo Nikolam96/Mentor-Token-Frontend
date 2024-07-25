@@ -5,7 +5,7 @@ import useJobsApi from "../../api/useJobsApi";
 import { useState } from "react";
 import SpinnerSvg from "../SpinnerSvg";
 
-const AppliedMentor = ({ mentorId, createdAt }) => {
+const AppliedMentor = ({ mentorId, createdAt, jobID, applicationId }) => {
   const [error, setError] = useState(null);
   const { name, picture, _id } = mentorId;
 
@@ -20,18 +20,22 @@ const AppliedMentor = ({ mentorId, createdAt }) => {
   const applicationAccept = (event) => {
     event.stopPropagation();
     const headers = "application/json";
-    const url = `updateApplication/${_id}`;
+    const url = `updateApplication/${applicationId}`;
     const fetchMethod = "patch";
-    const data = { status: "accepted", acceptedStatus: "in progress" };
+    const data = {
+      status: "direct",
+      acceptedStatus: "in progress",
+      jobId: jobID,
+    };
     updateApplicationApi.mutate({ data, url, headers, fetchMethod });
   };
 
   const applicationReject = (event) => {
     event.stopPropagation();
     const headers = "application/json";
-    const url = `updateApplication/${_id}`;
-    const fetchMethod = "patch";
-    const data = { status: "rejected", acceptedStatus: "rejected" };
+    const url = `deleteApplication/${jobID}`;
+    const fetchMethod = "delete";
+    const data = { mentorId: _id };
     updateApplicationApi.mutate({ data, url, headers, fetchMethod });
   };
 

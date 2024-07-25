@@ -12,6 +12,8 @@ import styles from "./startUpDashboard.module.css";
 const StartupDashboard = () => {
   const [click, setClick] = useState(false);
   const [tableData, setTableData] = useState(falseTable);
+  const [active, setActive] = useState("all");
+
   const [mentorsPage, setMentorsPage] = useState({
     page: "?page=1",
     url: `/getTopMentors`,
@@ -56,11 +58,58 @@ const StartupDashboard = () => {
     }
   }, [click, jobsPage]);
 
+  const handleFilter = (status) => {
+    setJobsPage({
+      ...jobsPage,
+      page: `?page=1&limit=8&acceptedStatus=${status}`,
+    });
+  };
+
   return (
     <div className={styles.startUpDashboard}>
       <div>
         <h1>Assigned Jobs</h1>
-        {jobs.length === 0 && !isJobsLoading && (
+        {!isJobsLoading && !jobsError && jobs && click && (
+          <ul className={styles.jobsList}>
+            <li
+              onClick={() => {
+                setActive("all");
+                handleFilter("");
+              }}
+              className={active == "all" ? styles.active : ""}
+            >
+              All
+            </li>
+            <li
+              onClick={() => {
+                setActive("done");
+                handleFilter("done");
+              }}
+              className={active == "done" ? styles.active : ""}
+            >
+              Done
+            </li>
+            <li
+              onClick={() => {
+                setActive("rejected");
+                handleFilter("rejected");
+              }}
+              className={active == "rejected" ? styles.active : ""}
+            >
+              Rejected
+            </li>
+            <li
+              onClick={() => {
+                setActive("in progress");
+                handleFilter("in progress");
+              }}
+              className={active == "in progress" ? styles.active : ""}
+            >
+              In Progress
+            </li>
+          </ul>
+        )}
+        {jobs.length === 0 && active == 1 && !isJobsLoading && (
           <h2>Click on Mentor to get Data!</h2>
         )}
         {jobsError && (
@@ -70,28 +119,49 @@ const StartupDashboard = () => {
         {!isJobsLoading &&
           !jobsError &&
           jobs &&
-          jobs.map((job) => <AssignedJob {...job} key={job._id} />)}
+          jobs.map((job) => (
+            <AssignedJob
+              {...job}
+              key={job._id}
+              click={setClick}
+              refetch={refetchJobs}
+            />
+          ))}
         {jobsDocs.totalDocs > jobsDocs.limit && (
           <div className={styles.pagination}>
             <button
-              onClick={() =>
-                setJobsPage({
-                  ...jobsPage,
-                  page: `?page=${jobsDocs.page - 1}`,
-                })
-              }
+              onClick={() => {
+                active == "all"
+                  ? setJobsPage({
+                      ...jobsPage,
+                      page: `?page=${jobsDocs.page - 1}&limit=8`,
+                    })
+                  : setJobsPage({
+                      ...jobsPage,
+                      page: `?page=${
+                        jobsDocs.page - 1
+                      }&limit=8&acceptedStatus=${active}`,
+                    });
+              }}
               disabled={!jobsDocs?.hasPrevPage}
               className={!jobsDocs?.hasPrevPage ? styles.red : ""}
             >
               Previous Page
             </button>
             <button
-              onClick={() =>
-                setJobsPage({
-                  ...jobsPage,
-                  page: `?page=${jobsDocs.page + 1}`,
-                })
-              }
+              onClick={() => {
+                active == "all"
+                  ? setJobsPage({
+                      ...jobsPage,
+                      page: `?page=${jobsDocs.page + 1}&limit=8`,
+                    })
+                  : setJobsPage({
+                      ...jobsPage,
+                      page: `?page=${
+                        jobsDocs.page + 1
+                      }&limit=8&acceptedStatus=${active}`,
+                    });
+              }}
               disabled={!jobsDocs?.hasNextPage}
               className={!jobsDocs?.hasNextPage ? styles.red : ""}
             >

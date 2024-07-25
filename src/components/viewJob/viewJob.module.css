@@ -83,6 +83,17 @@
   transition: background-color 0.3s;
 }
 
+.viewJob button[datatype="finished"] {
+  background-color: green;
+}
+.viewJob button[datatype="finished"]:hover {
+  background-color: rgba(0, 128, 0, 0.6);
+}
+
+.viewJob .closeButton {
+  margin-left: 1rem;
+}
+
 .viewJob button:hover {
   background-color: var(--clr-purple-hover-400);
 }

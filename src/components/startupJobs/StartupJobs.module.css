@@ -15,6 +15,10 @@
   gap: 1rem;
 }
 
+.startupJobs .h2 {
+  color: var(--clr-purple-primary-400);
+}
+
 .startupJobs button {
   background-color: var(--clr-purple-primary-400);
   color: #fff;

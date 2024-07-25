@@ -3,25 +3,39 @@ import PropTypes from "prop-types";
 import styles from "./applicationSend.module.css";
 import { useState } from "react";
 import ViewJob from "../viewJob/ViewJob";
+import useJobsApi from "../../api/useJobsApi";
 
-const ApplicationSend = ({ jobId, pending }) => {
+const ApplicationSend = ({ jobId, pending, _id }) => {
   const { ref: myRef, inView: visible } = useInView({
     threshold: 1,
     triggerOnce: true,
   });
   const [portal, setPortal] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleDivClick = () => {
-    event.stopPropagation();
+  const updateJobApi = useJobsApi(setError);
+
+  const handleDivClick = (e) => {
+    e.stopPropagation();
     setPortal(true);
   };
 
   const handleAcceptClick = (e) => {
-    console.log("Accept button clicked");
+    e.stopPropagation();
+    let headers = "multipart/form-data";
+    let url = `updateApplication/${_id}`;
+    let fetchMethod = "patch";
+    const data = { acceptedStatus: "in progress", status: "direct" };
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
   };
 
   const handleRejectClick = (e) => {
-    console.log("Reject button clicked");
+    e.stopPropagation();
+    let headers = "multipart/form-data";
+    let url = `updateApplication/${_id}`;
+    let fetchMethod = "patch";
+    const data = { acceptedStatus: "rejected", status: "direct" };
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
   };
 
   return (
@@ -32,6 +46,8 @@ const ApplicationSend = ({ jobId, pending }) => {
         onClick={handleDivClick}
       >
         <h3>{jobId.title}</h3>
+        {error && <p className={styles.error}>{error}</p>}
+
         {!pending ? (
           <div className={styles.btnContainer}>
             <button className={styles.accept} onClick={handleAcceptClick}>

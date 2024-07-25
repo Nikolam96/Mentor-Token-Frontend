@@ -21,6 +21,9 @@ import MentorStats from "./mentorStats/MentorStats";
 import MentorJobs from "./mentorJobs/MentorJobs";
 import Logout from "./Logout";
 import NotFound from "./notFound/NotFound";
+import PersonalData from "./personalData/PersonalData";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export {
   Navbar,
@@ -46,4 +49,7 @@ export {
   MentorJobs,
   Logout,
   NotFound,
+  PersonalData,
+  ForgotPassword,
+  ResetPassword,
 };

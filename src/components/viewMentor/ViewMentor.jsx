@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import AppliedMentor from "../appliedMentor/AppliedMentor";
@@ -7,7 +7,10 @@ import moment from "moment";
 import AddMentorPopUp from "../addMentorPopUp/AddMentorPopUp";
 import DeleteComponent from "../DeleteComponent";
 import useJobsApi from "../../api/JobsApi";
+import JobsApi from "../../api/useJobsApi";
 import SpinnerSvg from "../SpinnerSvg";
+import { getId, getRole } from "../../config/StorageFunctions";
+import axios from "axios";
 
 const ViewMentor = ({
   setPortalUse,
@@ -19,18 +22,34 @@ const ViewMentor = ({
   id,
   mentors,
   createdAt,
+  companyId,
+  isLoading: isApplication,
+  data,
 }) => {
   const [fadeOut, setFadeOut] = useState(portalUse);
   const [updateJob, setUpdateJob] = useState(false);
   const [deleteJob, setDeleteJob] = useState(false);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [finder, setFinder] = useState(false);
   const formattedDate = moment(createdAt).format("Do MMMM YYYY");
+
+  const handleClose = () => {
+    setFadeOut(false);
+    setTimeout(() => {
+      setPortalUse(!portalUse);
+    }, 500);
+  };
 
   let page = `?page=${currentPage}`;
   let url = `/applications/${id}`;
   const deleteUrl = `deleteJob/${id}`;
 
-  const { data: jobsData, isLoading, error } = useJobsApi(page, url);
+  const {
+    data: jobsData,
+    isLoading,
+    error: fetchError,
+  } = useJobsApi(page, url);
   const jobs = jobsData?.jobs || [];
   const pagination = jobsData?.pagination || {};
 
@@ -42,11 +61,49 @@ const ViewMentor = ({
     setCurrentPage((prev) => prev - 1);
   };
 
+  const updateJobApi = JobsApi(setError, handleClose);
+
+  const handleApplyJob = () => {
+    let headers = "multipart/form-data";
+    let url = `createApplication`;
+    let fetchMethod = "post";
+    const data = {
+      mentorId: getId(),
+      jobId: id,
+      companyId: companyId,
+      applicationType: "mentorToCompany",
+    };
+    updateJobApi.mutate({ data, url, headers, fetchMethod });
+  };
+
+  const findApplication = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:10000/api/v1/findApplication",
+        { mentorId: getId(), jobId: id, companyId: companyId }
+      );
+
+      setFinder(response?.data?.data?.fondedApplication);
+    } catch (error) {
+      setError(error);
+    }
+  };
+  useEffect(() => {
+    findApplication();
+  }, []);
+
   return ReactDOM.createPortal(
     <div
       className={`${styles.viewMentor} ${fadeOut ? styles.show : styles.hide}`}
     >
-      <div className={styles.wrapper}>
+      <div
+        className={`${styles.wrapper} ${
+          data.fondedApplication &&
+          !isApplication &&
+          getRole() === "startup" &&
+          styles.foundApplication
+        }`}
+      >
         <div className={styles.header}>
           <img
             src={
@@ -57,6 +114,8 @@ const ViewMentor = ({
             alt={title}
             className={styles.jobPicture}
           />
+          {error && <p className={styles.error}>Error: {error}</p>}
+
           <h2>{name}</h2>
         </div>
         <div className={styles.body}>
@@ -92,13 +151,15 @@ const ViewMentor = ({
                 </h2>
               )}
               <SpinnerSvg spinner={isLoading} width={50} />
-              {error && <p>{error.message}</p>}
+              {fetchError && <p>{fetchError.message}</p>}
               {jobs.map((mentor) => (
                 <AppliedMentor
                   {...mentor}
                   key={mentor._id}
                   job={false}
                   setFadeOut={setFadeOut}
+                  jobID={id}
+                  applicationId={mentor._id}
                 />
               ))}
             </div>
@@ -125,7 +186,13 @@ const ViewMentor = ({
           </div>
         ) : (
           <div className={styles.applyContainer}>
-            <button className={styles.apply}>Apply</button>
+            <button
+              className={`${styles.apply} ${finder && styles.disabled}`}
+              onClick={handleApplyJob}
+              disabled={finder}
+            >
+              Apply
+            </button>
           </div>
         )}
         <button

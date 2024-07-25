@@ -19,7 +19,7 @@
 
 .input {
   padding: 0.7rem 3rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
   border: 2px solid transparent;
   outline: none;
   transition: var(--transition--200);

@@ -1,6 +1,7 @@
 .mentorDashboard {
   display: grid;
   gap: 1rem;
+  min-height: 69vh;
 }
 
 .applicationContainer h3 {
@@ -39,6 +40,30 @@
 
 .pagination .red {
   background-color: var(--clr-purple-secondary-400);
+}
+
+.mentorDashboard .jobsList {
+  display: flex;
+  margin-block: 1rem;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.jobsList li {
+  color: #566a7f;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #566a7f;
+  padding-inline: 0.7rem;
+  padding-bottom: 2px;
+}
+
+.jobsList li:hover,
+.jobsList .active {
+  cursor: pointer;
+  color: rgba(105, 108, 255, 1);
+  padding-bottom: 0;
+  border-bottom: 3px solid rgba(105, 108, 255, 1);
 }
 
 @media (width > 768px) {

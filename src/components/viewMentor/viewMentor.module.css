@@ -11,6 +11,10 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
+.viewMentor .foundApplication {
+  outline: 4px solid var(--clr-purple-primary-400);
+}
+
 .viewMentor .header {
   display: flex;
   align-items: center;
@@ -72,12 +76,14 @@
   align-items: center;
   transition: var(--transition--200);
   padding-block: 0.3rem;
+  fill: var(--clr-purple-primary-400);
 }
 
 .viewMentor .exit:hover {
   background-color: var(--clr-purple-hover-400--2);
   border-radius: 50%;
   cursor: pointer;
+  fill: var(--clr-purple-primary-400);
 }
 
 .viewMentor .applyContainer {
@@ -164,6 +170,10 @@
 }
 
 .viewMentor .pagination .red {
+  background-color: var(--clr-purple-secondary-400);
+}
+
+.viewMentor .disabled {
   background-color: var(--clr-purple-secondary-400);
 }
 

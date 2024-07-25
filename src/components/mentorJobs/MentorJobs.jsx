@@ -26,7 +26,8 @@ const MentorJobs = () => {
 
   return (
     <div className={styles.startupJobs}>
-      <h1>Your Startup Jobs</h1>
+      <h1>Startup Jobs</h1>
+      <h2 className={styles.h2}> Total : {pagination.totalDocs}</h2>
       <div className={styles.buttonContainer}>
         {portalUse && (
           <AddMentorPopUp
@@ -46,9 +47,6 @@ const MentorJobs = () => {
         <div>
           <h1>No Jobs Available</h1>
           <p>It looks like you don’t have any jobs listed at the moment.</p>
-          <p>
-            Get started by creating a new job post or exploring other options!
-          </p>
         </div>
       )}
 

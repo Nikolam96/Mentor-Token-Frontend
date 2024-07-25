@@ -4,6 +4,7 @@ import styles from "./addMentorPopUp/addMentorPopUp.module.css";
 import PropTypes from "prop-types";
 import SpinnerSvg from "./SpinnerSvg";
 import useJobsApi from "../api/useJobsApi";
+import { getId } from "../config/StorageFunctions";
 
 const DeleteComponent = ({ setPortalUse, portalUse, header, url }) => {
   const [fadeOut, setFadeOut] = useState(portalUse);
@@ -13,7 +14,7 @@ const DeleteComponent = ({ setPortalUse, portalUse, header, url }) => {
   const handleDelete = () => {
     const headers = "multipart/form-data";
     const fetchMethod = "delete";
-    const data = {};
+    const data = { companyId: getId() };
     deleteApi.mutate({ data, url, headers, fetchMethod });
   };
 

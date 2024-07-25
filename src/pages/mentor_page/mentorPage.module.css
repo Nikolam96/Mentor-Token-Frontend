@@ -1,13 +1,53 @@
 .mentor {
-  background-color: rgba(245, 245, 249, 1);
+  background-color: rgba(156, 156, 255, 0.1);
   padding-bottom: 2rem;
 }
 .mentor h1 {
   color: rgba(64, 77, 97, 1);
 }
 
+.wrapper .inputWrapper {
+  text-align: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-block: 0.5rem;
+  color: var(--clr-purple-primary-400);
+}
+
+.wrapper .inputWrapper input {
+  padding: 0.7rem 3rem;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  outline: none;
+  transition: var(--transition--200);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .inputWrapper button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  transition: var(--transition--200);
+  cursor: pointer;
+}
+
+.wrapper .inputWrapper button[datatype="submit"] {
+  background-color: var(--clr-purple-primary-400);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
 .mentor .wrapper {
   max-width: var(--m-xl-width);
   width: var(--width-900);
   margin-inline: auto;
+}
+
+.mentor .error {
+  color: red;
+  text-align: center;
 }

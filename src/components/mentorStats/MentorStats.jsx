@@ -44,7 +44,6 @@ const MentorStats = () => {
     fetchStats();
   }, []);
 
-  console.log(stats);
   const {
     data: usersData,
     isLoading,
@@ -66,10 +65,10 @@ const MentorStats = () => {
       </div>
       <div className={styles.overview}>
         <StartupOverview
-          mentors={stats?.totalJobs || 12}
-          assignedJobs={stats?.assignedJobs || 6}
-          finishedJobs={stats?.finishedJobs || 14}
-          appliedJobs={stats?.appliedJobs || 12}
+          mentors={stats?.totalJobs || 0}
+          assignedJobs={stats?.assignedJobs || 0}
+          finishedJobs={stats?.finishedJobs || 0}
+          appliedJobs={stats?.appliedJobs || 0}
         />
       </div>
     </div>

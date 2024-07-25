@@ -5,6 +5,10 @@
   background-color: rgba(245, 245, 249, 1);
 }
 
+.test1 {
+  display: flex;
+}
+
 .startupMentorId h1 {
   padding-block: 1rem;
 }
@@ -117,6 +121,30 @@
 
 .pagination .red {
   background-color: var(--clr-purple-secondary-400);
+}
+
+.startupMentorId .jobsList {
+  display: flex;
+  margin-block: 1rem;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.jobsList li {
+  color: #566a7f;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #566a7f;
+  padding-inline: 0.7rem;
+  padding-bottom: 2px;
+}
+
+.jobsList li:hover,
+.jobsList .active {
+  cursor: pointer;
+  color: rgba(105, 108, 255, 1);
+  padding-bottom: 0;
+  border-bottom: 3px solid rgba(105, 108, 255, 1);
 }
 
 @media (width > 600px) {

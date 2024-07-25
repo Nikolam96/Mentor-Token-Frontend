@@ -14,6 +14,9 @@ import {
   MentorJobs,
   Logout,
   NotFound,
+  PersonalData,
+  ForgotPassword,
+  ResetPassword,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./utils/PrivateRoute";
@@ -32,6 +35,8 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="register-start-up" element={<RegisterStartup />} />
           <Route path="register-mentor" element={<RegisterMentor />} />
+          <Route path="forgotPassword" element={<ForgotPassword />} />
+          <Route path="resetPassword/:id" element={<ResetPassword />} />
         </Route>
         <Route element={<PrivateRoute />}>
           <Route path="startup" element={<StartUpPage />}>
@@ -40,12 +45,15 @@ function App() {
             <Route path="mentors/:id" element={<StartupMentorId />} />
             <Route path="jobs" element={<StartupJobs />} />
             <Route path="logout" element={<Logout />} />
+            <Route path="personalData" element={<PersonalData />} />
           </Route>
           <Route path="mentor" element={<MentorPage />}>
             <Route path="dashboard" element={<MentorDashboard />} />
             <Route path="stats" element={<MentorStats />} />
             <Route path="jobs" element={<MentorJobs />} />
             <Route path="logout" element={<Logout />} />
+            <Route path="personalData" element={<PersonalData />} />
+            <Route path="mentors/:id" element={<StartupMentorId />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

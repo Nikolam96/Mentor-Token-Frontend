@@ -1,6 +1,7 @@
 import styles from "./startupMentorId/startupMentorId.module.css";
 import AddMentorPopUp from "./addMentorPopUp/AddMentorPopUp";
 import { useState } from "react";
+import { getRole } from "../config/StorageFunctions";
 
 const AboutSection = ({ skills, description, mentor, _id }) => {
   const [portalUse, setPortalUse] = useState(false);
@@ -18,7 +19,7 @@ const AboutSection = ({ skills, description, mentor, _id }) => {
         </ul>
       )}
       <p>{description || "There are currently no description!"} </p>
-      {mentor && (
+      {mentor && getRole() == "startup" && (
         <button
           onClick={() => {
             setPortalUse(!portalUse);

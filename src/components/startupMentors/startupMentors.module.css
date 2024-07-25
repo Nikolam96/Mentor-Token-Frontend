@@ -142,6 +142,11 @@
   justify-content: center;
   gap: 1rem;
 }
+.startupMentor .ratingSpan {
+  display: block;
+  color: var(--clr-purple-primary-400);
+  padding-bottom: 0.3rem;
+}
 
 .pagination .red {
   background-color: var(--clr-purple-secondary-400);
